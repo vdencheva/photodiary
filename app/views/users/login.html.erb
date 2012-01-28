@@ -1,0 +1,23 @@
+<h1><%= I18n.t('views.user.login') %></h1>
+
+<%= form_for(@user, :url => login_path) do |f| %>
+  <% if flash[:error] %>
+    <div class="error_explanation">
+      <h2><%= flash[:error] %></h2>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit I18n.t('helpers.submit.user.login') %>
+  </div>
+<% end %>
+
+<%= link_to I18n.t('views.user.back_to_users'), users_path %>

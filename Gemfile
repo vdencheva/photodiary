@@ -32,7 +32,7 @@ gem 'jquery-rails'
 
 gem "rake", "0.8.7"
 
-gem 'carrierwave', '0.5.8'
+gem 'carrierwave'
 gem 'mini_magick'
 
 group :development do

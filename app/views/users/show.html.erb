@@ -1,0 +1,25 @@
+<h1><%= I18n.t('views.user.preview_user') %>  <%= @user.username %></h1>
+<% if flash[:notice] %>
+  <div class="message_explanation">
+    <h2><%= flash[:notice] %></h2>
+  </div>
+<% end %>
+
+<p>
+  <b><%= I18n.t('activerecord.attributes.user.full_name') %>:</b>
+  <%= @user.full_name %>
+</p>
+
+<p>
+  <b><%= I18n.t('activerecord.attributes.user.email') %>:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b><%= I18n.t('activerecord.attributes.user.description') %>:</b>
+  <%= @user.description %>
+</p>
+
+
+<%= link_to I18n.t('views.user.edit'), edit_user_path(@user) %> |
+<%= link_to I18n.t('views.user.back_to_users'), users_path %>

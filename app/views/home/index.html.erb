@@ -1,0 +1,20 @@
+<h1>Фото Дневник</h1>
+<% if flash[:message] %>
+  <div class="message_explanation">
+    <h2><%= flash[:message] %></h2>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h2><%= flash[:error] %></h2>
+  </div>
+<% end %>
+
+<div>
+  <% if logged_in? %>
+    Добре дошли, <%= session[:current_user][:username] %>. Можете да <%= link_to 'прегледате профила си', user_path(session[:current_user]) %>, <%= link_to 'да го редактирате', edit_user_path(session[:current_user]) %> или <%= link_to 'да излезете от него', logout_path, method: :delete %>.
+  <% else %>
+    <%= link_to 'Регистрация', new_user_path %> или <%= link_to 'Вход', login_path %>
+  <% end %>
+</div>
+<p><%= link_to 'Потребителите', users_path %></p>

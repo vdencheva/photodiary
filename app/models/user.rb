@@ -1,0 +1,41 @@
+﻿require 'digest/sha1'
+
+class User < ActiveRecord::Base  
+  attr_accessor :password, :remove_photo
+  
+  mount_uploader :photo, AvatarUploader
+  
+  before_save :create_hashed_password, :remove_old_photo
+  
+  validates_presence_of :username
+  validates_uniqueness_of :username, :if => -> { username.present? }
+  validates_presence_of :password, :on => :create
+  validates_length_of :password, :minimum => 6, :if => -> { password.present? }
+  validates_confirmation_of :password, :if => -> { password.present? }
+  validates_presence_of :email
+  validates_uniqueness_of :email, :if => -> { email.present? }
+  validates_format_of :email, :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, :if => -> { email.present? }
+  
+  def self.authenticate(username, password)
+    user = User.find_by_username(username)
+    return nil if user.nil?
+    return user if user.has_password?(password)
+    nil
+  end
+  
+  def create_hashed_password
+    write_attribute(:hashed_password, User.encrypt(password)) if password.present?
+  end
+  
+  def remove_old_photo
+    self.photo = '' if remove_photo == '1'
+  end 
+  
+  def has_password?(password)
+    self.hash_password == User.encrypt(password)
+  end
+  
+  def self.encrypt(password)
+    Digest::SHA1.hexdigest(password)
+  end
+end

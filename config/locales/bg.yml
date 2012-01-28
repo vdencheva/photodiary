@@ -1,0 +1,60 @@
+﻿bg:
+  activerecord:
+    errors:
+      messages:
+        blank: 'е задължително поле'
+        invalid: 'невалиден формат'
+        confirmation: 'и повторената парола не съвпадат'
+      models:
+        user:
+          attributes:
+            username:
+              taken: 'вече е било използвано'
+            email:
+              taken: 'вече е бил използван'
+            password:
+              too_short: 'не може да е по-малко от 6 символа'
+    attributes:
+      user:
+        username: 'Потребителско име'
+        password: 'Парола'
+        pass_confirmation: 'Потвърдете паролата'
+        password_confirmation: 'Повторете паролата'
+        full_name: 'Име'
+        email: 'Електронна поща'
+        description: 'Описание'
+        remember_me: 'Запомни ме на този компютър'
+        photo: 'Снимка'
+        remove_photo: 'Изтриване на снимката'
+  helpers:
+    submit:
+      user:
+        create: 'Създаване'
+        update: 'Обновяване'
+        login: 'Вписване'
+  views:
+    user:
+      registration:  'Регистрация'
+      edit_user: 'Редактиране на потребител'
+      preview_user: 'Преглед на потребител'
+      list: 'Списък с потребители'
+      preview: 'Преглед'
+      edit: 'Редактиране'
+      delete: 'Изтриване'
+      delete_msg: 'Сигурни ли сте, че искате да изтриете този потребител'
+      new: 'Нов потребител'
+      back_to_users: 'Обратно към списъка с потребители'
+      errors_occur: 'Възникнаха грешки'
+      error_occur: 'Възникна грешка'
+      created: 'Потребителят е създаден успешно.'
+      updated: 'Потребителят е обновен.'
+      login: 'Вход'
+      login_error: 'Грешка. Това потребителско име и парола не са валидни.'
+      login_succeeded: 'Вписахте се успешно.'
+      logout_succeeded: 'Излязохте успешно от профила си.'
+      logout_error: 'Грешка. В момента не можете да излезете от профила си. Моля, опитайте отново.'
+      
+      
+      
+      
+ 

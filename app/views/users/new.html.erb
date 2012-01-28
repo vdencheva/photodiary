@@ -1,0 +1,37 @@
+<h1><%= I18n.t('views.user.registration') %></h1>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= (@user.errors.count == 1 ? I18n.t('views.user.error_occur') : I18n.t('views.user.errors_occur')) %>:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to I18n.t('views.user.back_to_users'), users_path %>
