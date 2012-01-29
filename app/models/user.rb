@@ -1,11 +1,13 @@
 ﻿require 'digest/sha1'
 
 class User < ActiveRecord::Base  
+  has_many :albums
+  
   attr_accessor :password, :remove_photo
   
   mount_uploader :photo, AvatarUploader
   
-  before_save :create_hashed_password, :remove_old_photo
+  before_save :create_hashed_password, :update_photo
   
   validates_presence_of :username
   validates_uniqueness_of :username, :if => -> { username.present? }
@@ -23,19 +25,21 @@ class User < ActiveRecord::Base
     nil
   end
   
-  def create_hashed_password
-    write_attribute(:hashed_password, User.encrypt(password)) if password.present?
-  end
-  
-  def remove_old_photo
-    self.photo = '' if remove_photo == '1'
-  end 
-  
   def has_password?(password)
-    self.hash_password == User.encrypt(password)
+    self.hashed_password == User.encrypt(password)
   end
   
   def self.encrypt(password)
     Digest::SHA1.hexdigest(password)
   end
+  
+  private
+  
+  def create_hashed_password
+    write_attribute(:hashed_password, User.encrypt(password)) if password.present?
+  end
+  
+  def update_photo
+    write_attribute(:photo, '') if remove_photo.present? && remove_photo == '1'
+  end 
 end

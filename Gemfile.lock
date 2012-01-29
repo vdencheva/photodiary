@@ -128,7 +128,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  carrierwave (= 0.5.8)
+  carrierwave
   coffee-rails (~> 3.1.1)
   jquery-rails
   mini_magick

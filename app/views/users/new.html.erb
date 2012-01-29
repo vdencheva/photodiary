@@ -3,7 +3,7 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div class="error_explanation">
-      <h2><%= (@user.errors.count == 1 ? I18n.t('views.user.error_occur') : I18n.t('views.user.errors_occur')) %>:</h2>
+      <h2><%= (@user.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>

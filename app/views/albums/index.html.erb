@@ -1,0 +1,27 @@
+<h1><%= I18n.t('views.album.list') %></h1>
+
+<table>
+  <tr>
+    <th><%= I18n.t('activerecord.attributes.album.user') %></th>
+    <th><%= I18n.t('activerecord.attributes.album.title') %></th>
+    <th><%= I18n.t('activerecord.attributes.album.description') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @albums.each do |album| %>
+  <tr>
+    <td><%= album.user_id %></td>
+    <td><%= album.title %></td>
+    <td><%= album.description %></td>
+    <td><%= link_to I18n.t('views.preview'), user_album_path(@current_user, album) %></td>
+    <td><%= link_to I18n.t('views.edit'), edit_user_album_path(@current_user, album) %></td>
+    <td><%= link_to I18n.t('views.delete'), user_album_path(@current_user, album), confirm: I18n.t('views.album.delete_msg'), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to I18n.t('views.album.new'), new_user_album_path(@current_user) %>

@@ -1,0 +1,5 @@
+<h1><%= I18n.t('views.album.new_album') %></h1>
+
+<%= render 'form' %>
+
+<%= link_to I18n.t('views.album.back_to_albums'), user_albums_path(@current_user) %>

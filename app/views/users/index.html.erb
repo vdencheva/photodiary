@@ -6,7 +6,7 @@
     <th><%= I18n.t('activerecord.attributes.user.password') %></th>
     <th><%= I18n.t('activerecord.attributes.user.full_name') %></th>
     <th><%= I18n.t('activerecord.attributes.user.email') %></th>
-    <th><%= I18n.t('activerecord.attributes.user.description') %></th>
+    <th><%= I18n.t('activerecord.attributes.user.albums') %></th>
     <th><%= I18n.t('activerecord.attributes.user.photo') %></th>
     <th></th>
     <th></th>
@@ -19,11 +19,11 @@
     <td><%= user.password %></td>
     <td><%= user.full_name %></td>
     <td><%= user.email %></td>
-    <td><%= user.description %></td>
+    <td><%= link_to "Albumi", user_albums_path(user) %></td>
     <td><%= user.photo %></td>
-    <td><%= link_to I18n.t('views.user.preview'), user %></td>
-    <td><%= link_to I18n.t('views.user.edit'), edit_user_path(user) %></td>
-    <td><%= link_to I18n.t('views.user.delete'), user, confirm: I18n.t('views.user.delete_msg'), method: :delete %></td>
+    <td><%= link_to I18n.t('views.preview'), user %></td>
+    <td><%= link_to I18n.t('views.edit'), edit_user_path(user) %></td>
+    <td><%= link_to I18n.t('views.delete'), user, confirm: I18n.t('views.user.delete_msg'), method: :delete %></td>
   </tr>
 <% end %>
 </table>
