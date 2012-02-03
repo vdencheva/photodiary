@@ -1,13 +1,12 @@
 <h1><%= I18n.t('views.album.preview_album') %></h1>
-<% if flash[:notice] %>
-  <div class="message_explanation">
-    <h2><%= flash[:notice] %></h2>
-  </div>
+<% if has_edit_right? %>
+  [<%= link_to I18n.t('views.edit'), edit_user_album_path(current_user, @album) %>]
 <% end %>
+<%= render 'messages' %>
 
 <p>
   <b><%= I18n.t('activerecord.attributes.album.user') %>:</b>
-  <%= @album.user_id %>
+  <%= @album_user.username %>
 </p>
 
 <p>
@@ -19,7 +18,3 @@
   <b><%= I18n.t('activerecord.attributes.album.description') %>:</b>
   <%= @album.description %>
 </p>
-
-
-<%= link_to I18n.t('views.edit'), edit_user_album_path(@current_user, @album) %> |
-<%= link_to I18n.t('views.album.back_to_albums'), user_albums_path(@current_user) %>

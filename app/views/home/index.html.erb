@@ -1,14 +1,5 @@
 <h1>Фото Дневник</h1>
-<% if flash[:message] %>
-  <div class="message_explanation">
-    <h2><%= flash[:message] %></h2>
-  </div>
-<% end %>
-<% if flash[:error] %>
-  <div class="error_explanation">
-    <h2><%= flash[:error] %></h2>
-  </div>
-<% end %>
+<%= render 'messages' %>
 
 <div>
   <% if logged_in? %>

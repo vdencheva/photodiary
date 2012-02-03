@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="nav">
+  <%= link_to I18n.t('views.user.list'), users_path %> | 
+  <% if logged_in? %>
+    <%= link_to I18n.t('views.user.profile'), session[:current_user] %> |
+    <%= link_to I18n.t('views.album.my_albums'), user_albums_path(session[:current_user]) %> |
+    <%= link_to I18n.t('views.album.new_album'), new_user_album_path(session[:current_user]) %> |
+    <%= link_to I18n.t('views.user.logout'), logout_path, method: "delete" %> | 
+  <% else %>
+    <%= link_to I18n.t('views.user.registration'), new_user_path %> | 
+    <%= link_to I18n.t('views.user.login'), login_path %> | 
+  <% end %>
+</div>
 
 <%= yield %>
 

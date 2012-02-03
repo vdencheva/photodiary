@@ -1,0 +1,32 @@
+<% if flash[:message] %>
+  <div class="message_explanation">
+    <h2><%= flash[:message] %></h2>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="error_explanation">
+    <h2><%= flash[:error] %></h2>
+  </div>
+<% end %>
+
+<% if !defined?(@user).nil? && @user.errors.any? %>
+  <div class="error_explanation">
+    <h2><%= (@user.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if !defined?(@album).nil? && @album.errors.any? %>
+  <div class="error_explanation">
+    <h2><%= (@album.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
+    <ul>
+      <% @album.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

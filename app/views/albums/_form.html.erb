@@ -1,15 +1,5 @@
-<%= form_for([@current_user, @album]) do |f| %>
-  <% if @album.errors.any? %>
-    <div class="error_explanation">
-      <h2><%= (@album.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
-
-      <ul>
-      <% @album.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for([current_user, @album]) do |f| %>
+  <%= render 'messages' %>
 
   <div class="field">
     <%= f.label :title %><br />

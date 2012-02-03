@@ -1,9 +1,14 @@
-<h1><%= I18n.t('views.user.preview_user') %>  <%= @user.username %></h1>
-<% if flash[:notice] %>
-  <div class="message_explanation">
-    <h2><%= flash[:notice] %></h2>
-  </div>
+<h1>
+  <% if has_edit_right? %>
+    <%= I18n.t('views.user.profile') %>
+  <% else %>
+    <%= I18n.t('views.user.preview_user') %> <%= @user.username %>
+  <% end %>
+</h1>
+<% if has_edit_right? %>
+  [<%= link_to I18n.t('views.edit'), edit_user_path(current_user) %>]
 <% end %>
+<%= render 'messages' %>
 
 <p>
   <b><%= I18n.t('activerecord.attributes.user.full_name') %>:</b>
@@ -29,6 +34,8 @@
   <%= @user.description %>
 </p>
 
+<p>
+  <b><%= I18n.t('activerecord.attributes.user.albums') %>:</b>
+  <%= link_to "X na broi", user_albums_path(@user) %>
+</p>
 
-<%= link_to I18n.t('views.edit'), edit_user_path(@user) %> |
-<%= link_to I18n.t('views.user.back_to_users'), users_path %>

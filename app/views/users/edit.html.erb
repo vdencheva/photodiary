@@ -1,21 +1,13 @@
 <h1><%= I18n.t('views.user.edit_user') %></h1>
+[<%= link_to I18n.t('views.preview'), current_user %> |
+<%= link_to I18n.t('views.delete'), current_user, confirm: I18n.t('views.user.delete_msg'), method: :delete %>]
 
 <%= form_for(@user, :html => { :multipart => true }) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_explanation">
-      <h2><%= (@user.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'messages' %>
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username, :disabled => true %>
+    <%= f.text_field :username, :disabled => false %>
   </div>
   <div class="field">
     <%= f.label :full_name %><br />
@@ -45,5 +37,3 @@
   </div>
 <% end %>
 
-<%= link_to I18n.t('views.preview'), @user %> |
-<%= link_to I18n.t('views.user.back_to_users'), users_path %>

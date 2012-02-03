@@ -1,6 +1,5 @@
 <h1><%= I18n.t('views.album.edit_album') %></h1>
+[<%= link_to I18n.t('views.preview'), [current_user, @album] %> |
+<%= link_to I18n.t('views.delete'), [current_user, @album], confirm: I18n.t('views.album.delete_msg'), :method => :delete %>]
 
 <%= render 'form' %>
-
-<%= link_to I18n.t('views.preview'), [@current_user, @album] %> |
-<%= link_to I18n.t('views.album.back_to_albums'), user_albums_path(@current_user) %>

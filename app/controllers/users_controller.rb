@@ -1,4 +1,8 @@
 ﻿class UsersController < ApplicationController
+  helper_method :has_edit_right?
+  
+  before_filter :require_login, :only => [:edit, :update, :destroy, :logout]
+  
   # GET /users
   def index
     @users = User.all
@@ -17,6 +21,7 @@
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    require_user_ownership
   end
 
   # POST /users
@@ -33,6 +38,8 @@
   # PUT /users/1
   def update
     @user = User.find(params[:id])
+    require_user_ownership
+    
     if params[:user][:photo]
       params[:user][:remove_photo] = nil
     end
@@ -47,6 +54,8 @@
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
+    require_user_ownership
+    
     @user.destroy
 
     redirect_to users_url
@@ -79,5 +88,11 @@
       flash[:error] = I18n.t('views.user.logout_error')
     end
     redirect_to root_path
+  end
+  
+   private
+  
+  def has_edit_right?
+    @user.id == current_user.id ? true : false
   end
 end
