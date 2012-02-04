@@ -1,31 +1,24 @@
-<h1>
-  <% if has_edit_right? %>
-    <%= I18n.t('views.album.my_albums') %>
-  <% else %>
-    <%= I18n.t('views.album.list') %><%= @album_user.username %>
+<div class="albumTitle">
+  <h1>
+    <% if has_user_riths? %>
+      <%= I18n.t('views.album.my_albums') %>
+    <% else %>
+      <%= I18n.t('views.album.list') %><%= link_to @user.username, user_path(@user) %>
+    <% end %>
+  </h1>
+  <% if has_user_riths? %>
+    <div class="albumLinks">
+      <%= link_to I18n.t('views.album.create_new'), new_user_album_path(@user) %> |
+    </div>
   <% end %>
-</h1>
+</div>
+<%= render 'messages' %>
 
-<table>
-  <tr>
-    <th><%= I18n.t('activerecord.attributes.album.title') %></th>
-    <th><%= I18n.t('activerecord.attributes.album.description') %></th>
-    <% if has_edit_right? %>
-      <th></th>
-      <th></th>
-    <% end %>
-  </tr>
-
-<% @albums.each do |album| %>
-  <tr>
-    <td><%= link_to album.title, user_album_path(@album_user, album) %></td>
-    <td><%= album.description %></td>
-    <% if has_edit_right? %>
-      <td><%= link_to I18n.t('views.edit'), edit_user_album_path(@album_user, album) %></td>
-      <td><%= link_to I18n.t('views.delete'), user_album_path(@album_user, album), confirm: I18n.t('views.album.delete_msg'), method: :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<div class="photoHolder">
+  <% @albums.each_with_index do |album, i| %>
+    <div class="objHolder bm <%= 'rm' if i % 5 != 4 %>">
+      <%= link_to image_tag(album.first_photo, :border=>0), album_photos_path(album), :title => album.title, :class => "photoLink" %>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>

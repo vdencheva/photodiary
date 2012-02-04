@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :load_current_user
   
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :has_album_rights?, :has_user_riths?, :logged_in?
   
   protect_from_forgery
   
@@ -42,5 +42,13 @@ class ApplicationController < ActionController::Base
       flash[:error] = I18n.t('views.mustbeyours_error')
       redirect_to root_url
     end
+  end
+  
+  def has_album_rights?
+    @album.user_id == current_user.id ? true : false
+  end
+  
+  def has_user_riths?
+    @user.id == current_user.id ? true : false
   end
 end

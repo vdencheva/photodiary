@@ -1,55 +1,59 @@
-<h1>Photo Preview</h1>
+<div class="albumTitle">
+  <h1><%= link_to @album.title, album_photos_path(@album) %></h1>
+  <% if has_album_rights? %>
+    <div class="albumLinks">
+      <%= link_to I18n.t('views.edit'), edit_album_photo_path(@album, @photo) %> |
+      <%= link_to I18n.t('views.delete'), album_photo_path(@album, @photo), confirm: I18n.t('views.photo.delete_msg'), method: :delete %> |
+    </div>
+  <% end %>
+</div>
 <%= render 'messages' %>
 
-<p>
-  <b>Album:</b>
-  <%= @photo_album.title %>
-</p>
-
-<p>
-  <b>File:</b>
-  <% if @photo.file? %>
-      <%= image_tag(@photo.file.thumb.url) %><br />
-  <% else %>
-    -   
-  <% end %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @photo.title %>
-</p>
-
-<p>
-  <b>Date taken:</b>
-  <%= @photo.date_taken %>
-</p>
-
-<p>
-  <b>Place taken:</b>
-  <%= @photo.place_taken %>
-</p>
-
-<p>
-  <b>Camera:</b>
-  <%= @photo.camera %>
-</p>
-
-<p>
-  <b>Model:</b>
-  <%= @photo.model %>
-</p>
-
-<p>
-  <b>Other:</b>
-  <%= @photo.other %>
-</p>
-
-<p>
-  <b>Views:</b>
-  <%= @photo.views %>
-</p>
-
-
-<%= link_to 'Edit', edit_album_photo_path(@photo_album, @photo) %> |
-<%= link_to 'Back', album_photos_path(@photo_album) %>
+<div class="previewHolder">
+  <div class="imgHolder">
+    <%= image_tag(@photo.file.preview.url) %>
+  </div>
+  <div class="photoLinks">
+    <% if @photo.previous_photo_id %>
+      <%= link_to I18n.t('views.photo.previous'), album_photo_path(@album, @photo.previous_photo_id), :class => "prevPhoto" %>
+    <% end %>
+    <% if @photo.next_photo_id %>
+      <%= link_to I18n.t('views.photo.next'), album_photo_path(@album, @photo.next_photo_id), :class => "nextPhoto" %>
+    <% end %>
+  </div>
+  <div class="clear"></div>
+  <div class="previewInfo">
+  
+      <p><%= @photo.title %></p>
+      <p>
+        <b><%= I18n.t('views.photo.author') %>:</b>
+        <%= link_to @user.username, user_path(@user) %>
+      </p>
+      <p>
+      <p>
+        <b>Date taken:</b>
+        <%= @photo.date_taken %>
+      </p>
+      <p>
+        <b>Place taken:</b>
+        <%= @photo.place_taken %>
+      </p>
+      <p>
+        <b>Camera:</b>
+        <%= @photo.camera %>
+      </p>
+      <p>
+        <b>Model:</b>
+        <%= @photo.model %>
+      </p>
+      <p>
+        <b>Other:</b>
+        <%= @photo.other %>
+      </p>
+      <p>
+        <b>Views:</b>
+        <%= @photo.views %>
+      </p>
+    </div>
+    <div class="clear"></div>
+</div>

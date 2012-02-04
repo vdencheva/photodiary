@@ -1,9 +1,9 @@
 body {
-  background-color: #EEEEEE;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  margin: 0;
 }
 
 p, ol, ul, td {
@@ -24,8 +24,7 @@ a {
     color: #666;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    text-decoration: none;
   }
 }
 
@@ -88,3 +87,162 @@ div {
     list-style: square;
   }
 }
+
+.rm {
+  margin-right: 20px;
+}
+
+.bm {
+  margin-bottom: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.wrapper {
+  width: 100%;
+  background: #E8E8E8 url('/assets/bg.gif') repeat-y top center;
+}
+
+/* Navigation */
+.topHolder, .bottomHolder {
+  background: #F8F8F8 url('/assets/topbg.gif') repeat-x 0 0;
+  height: 33px;
+}
+
+.topHolder .topNavigation, .bottomHolder .bottomNavigation {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.topHolder .topNavigation .nav, .bottomHolder .bottomNavigation .nav {
+  float: left;
+  height: 33px;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.topHolder .topNavigation .nav li, .bottomHolder .bottomNavigation .nav li {
+  float: left;
+  display: block;
+  line-height: 33px;
+  list-style-type: none;
+}
+
+.topHolder .topNavigation .nav li a, .bottomHolder .bottomNavigation .nav li a {
+  color: #B3B3B3;
+  padding: 0 7px 0 6px;
+  text-decoration: none;
+}
+
+.topHolder .topNavigation .nav li a:hover, .bottomHolder .bottomNavigation .nav li a {
+  color: #FFFFFF;
+}
+
+.topHolder .topNavigation .nav a.topLogo {
+  background: transparent url('/assets/photoLogo.png') no-repeat 0 0;
+  width: 77px;
+  height: 33px;
+  display: block;
+  padding: 0 10px;
+}
+
+.topHolder .topNavigation .nav a.topLogo:hover {
+  background-position: 0 -38px;
+}
+
+.topHolder .topNavigation p, .bottomHolder .bottomNavigation p {
+  color: #B3B3B3;
+  font-size: 11px;
+  line-height: 33px;
+}
+
+.row {
+  width: 940px;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+  display: block;
+  clear: both;
+}
+
+/* Title */
+.row .albumTitle {
+  width: 100%;
+}
+
+.row .albumTitle .albumLinks {
+  padding: 0 0 20px;
+}
+
+.row .albumTitle .albumLinks a {
+  color: #597A9B;
+  text-decoration: none;
+}
+
+/* Users */
+.row .usersHolder .usrHolder {
+  width: 100px;
+  float: left;
+  position: relative;
+}
+
+.row .usersHolder .usrHolder a.userLink {
+  display: inline-block;
+  outline: none;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  padding: 4px;
+  position: relative;
+}
+
+.row .usersHolder .usrHolder a.userLink:hover {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+}
+
+/* Photos */
+.row .photoHolder .objHolder {
+  width: 170px;
+  float: left;
+  position: relative;
+}
+
+.row .photoHolder .objHolder a.photoLink {
+  display: inline-block;
+  outline: none;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  padding: 4px;
+  position: relative;
+}
+
+.row .photoHolder .objHolder a.photoLink:hover {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+}
+
+.row .albumDesc p {
+  margin: 5px 0;
+}
+
+/* Single Photo */
+.previewHolder .photoLinks {
+  float: left;
+  display: block;
+  width: 720px;
+  padding-bottom: 20px;
+}
+
+.previewHolder .photoLinks .nextPhoto {
+  float: right;
+}
+
+.previewHolder .previewInfo {
+  float: left;
+  display: block;
+  width: 100%;
+}
+
+

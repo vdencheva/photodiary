@@ -1,11 +1,17 @@
-<h1><%= I18n.t('views.photo.add_photos') %></h1>
+<div class="albumTitle">
+  <h1><%= I18n.t('views.photo.add_photo') %><%= I18n.t('views.photo.to') %>"<%= @album.title %>"</h1>
+  <div class="albumLinks">
+    <%= link_to I18n.t('views.photo.back_to_album'), album_photos_path(@album) %>
+  </div>
+</div>
 <%= render 'messages' %>
-<%= form_for([@photo_album, @photo]) do |f| %>
+
+<%= form_for([@album, @photo]) do |f| %>
   <div class="field">
-    <%= f.label :file %><br />
+    <%= f.label :file, I18n.t('views.photo.choose_photo') %>
     <%= f.file_field :file %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit I18n.t('views.photo.upload') %>
   </div>
 <% end %>

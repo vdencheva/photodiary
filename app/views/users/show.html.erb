@@ -1,13 +1,18 @@
-<h1>
-  <% if has_edit_right? %>
-    <%= I18n.t('views.user.profile') %>
-  <% else %>
-    <%= I18n.t('views.user.preview_user') %> <%= @user.username %>
+<div class="albumTitle">
+  <h1>
+    <% if has_user_riths? %>
+      <%= I18n.t('views.user.profile') %>
+    <% else %>
+      <%= I18n.t('views.user.preview_user') %> <%= @user.username %>
+    <% end %>
+  </h1>
+  <% if has_user_riths? %>
+    <div class="albumLinks">
+      <%= link_to I18n.t('views.edit'), edit_user_path(current_user) %> |
+      <%= link_to I18n.t('views.delete'), user_path(current_user), confirm: I18n.t('views.user.delete_msg'), method: :delete %> |
+    </div>
   <% end %>
-</h1>
-<% if has_edit_right? %>
-  [<%= link_to I18n.t('views.edit'), edit_user_path(current_user) %>]
-<% end %>
+</div>
 <%= render 'messages' %>
 
 <p>
@@ -35,7 +40,7 @@
 </p>
 
 <p>
-  <b><%= I18n.t('activerecord.attributes.user.albums') %>:</b>
-  <%= link_to "X na broi", user_albums_path(@user) %>
+  <b><%= link_to @user.albums_count.to_s+' '+I18n.t('activerecord.attributes.user.albums'), user_albums_path(@user) %></b> |
+  <b><%= link_to @user.photos_count.to_s+' '+I18n.t('activerecord.attributes.user.photos'), user_albums_path(@user) %></b>
 </p>
 

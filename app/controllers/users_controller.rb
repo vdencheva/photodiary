@@ -1,6 +1,4 @@
-﻿class UsersController < ApplicationController
-  helper_method :has_edit_right?
-  
+﻿class UsersController < ApplicationController  
   before_filter :require_login, :only => [:edit, :update, :destroy, :logout]
   
   # GET /users
@@ -29,7 +27,8 @@
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to @user, notice: I18n.t('views.user.created')
+      flash[:message] = I18n.t('views.user.created')
+      redirect_to @user
     else
        render action: "new"
     end
@@ -45,7 +44,8 @@
     end
 
     if @user.update_attributes(params[:user])
-      redirect_to @user, notice: I18n.t('views.user.updated')
+      flash[:message] = I18n.t('views.user.updated')
+      redirect_to @user
     else
       render action: "edit"
     end
@@ -88,11 +88,5 @@
       flash[:error] = I18n.t('views.user.logout_error')
     end
     redirect_to root_path
-  end
-  
-   private
-  
-  def has_edit_right?
-    @user.id == current_user.id ? true : false
   end
 end

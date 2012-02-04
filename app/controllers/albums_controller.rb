@@ -1,23 +1,21 @@
 class AlbumsController < ApplicationController
-  helper_method :has_edit_right?
-  
+  before_filter :load_album_owner
   before_filter :require_login, :only => [:new, :create, :edit, :update, :destroy]
   
   # GET /user/:user_id/albums
   def index
-    @album_user = User.find(params[:user_id])
-    @albums = @album_user.albums
+    @albums = @user.albums
   end
 
   # GET /user/:user_id/albums/:id
   def show
-    @album = Album.find(params[:id])
-    load_album_owner
+    redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id]
   end
 
   # GET /user/:user_id/albums/new
   def new
-    @album = current_user.albums.build
+    require_user_ownership
+    @album = @user.albums.build
   end
 
   # GET /user/:user_id/albums/:id/edit
@@ -28,10 +26,12 @@ class AlbumsController < ApplicationController
 
   # POST /user/:user_id/albums
   def create
-    @album = current_user.albums.build(params[:album])
+    require_user_ownership
+    @album = @user.albums.build(params[:album])
 
     if @album.save
-      redirect_to [current_user, @album], notice: 'Album was successfully created.'
+      flash[:message] = I18n.t('views.album.created')
+      redirect_to :controller => 'albums', :action => 'index'
     else
       render action: "new"
     end
@@ -43,7 +43,8 @@ class AlbumsController < ApplicationController
     require_album_ownership
     
     if @album.update_attributes(params[:album])
-      redirect_to [current_user, @album], notice: 'Album was successfully updated.'
+      flash[:message] = I18n.t('views.album.updated')
+      redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id]
     else
       render action: "edit"
     end
@@ -56,16 +57,12 @@ class AlbumsController < ApplicationController
     
     @album.destroy
 
-    redirect_to user_albums_url(current_user)
+    redirect_to user_albums_url(@user)
   end
   
   private
   
   def load_album_owner
-    @album_user = User.find(@album.user_id)
-  end
-  
-  def has_edit_right?
-    @album_user.id == current_user.id ? true : false
+    @user = User.find(params[:user_id])
   end
 end

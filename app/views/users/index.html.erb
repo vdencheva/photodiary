@@ -1,22 +1,13 @@
-<h1><%= I18n.t('views.user.list') %></h1>
+<div class="albumTitle">
+  <h1><%= I18n.t('views.user.users_of')+I18n.t('views.sitename') %></h1>
+</div>
 <%= render 'messages' %>
 
-<table>
-  <tr>
-    <th><%= I18n.t('activerecord.attributes.user.username') %></th>
-    <th><%= I18n.t('activerecord.attributes.user.full_name') %></th>
-    <th><%= I18n.t('activerecord.attributes.user.email') %></th>
-    <th><%= I18n.t('activerecord.attributes.user.albums') %></th>
-    <th><%= I18n.t('activerecord.attributes.user.photo') %></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= link_to user.username, user %></td>
-    <td><%= user.full_name %></td>
-    <td><%= user.email %></td>
-    <td><%= link_to "Albumi", user_albums_path(user) %></td>
-    <td><%= user.photo %></td>
-  </tr>
-<% end %>
-</table>
+<div class="usersHolder">
+  <% @users.each_with_index do |user, i| %>
+    <div class="usrHolder bm <%= 'rm' if i % 5 != 4 %>">
+      <%= link_to image_tag(user.avatar, :border=>0), user_path(user), :title => user.username, :class => "userLink" %>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>

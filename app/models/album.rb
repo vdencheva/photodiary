@@ -4,4 +4,9 @@ class Album < ActiveRecord::Base
   
   validates_presence_of :title
   validates_uniqueness_of :title, :if => -> { title.present? }
+  
+  def first_photo
+    result = Photo.where(:album_id => id).order("id ASC").limit(1)
+    result.first ? result.first.file.thumb.url : "/assets/nophotos.png"
+  end
 end

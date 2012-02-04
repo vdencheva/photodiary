@@ -33,6 +33,19 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(password)
   end
   
+  def avatar
+    photo.url ? photo.thumb.url : "/assets/noavatar.png"
+  end
+  
+  def albums_count
+    Album.where(:user_id => id).size
+  end
+  
+  
+  def photos_count
+    Photo.where("album_id IN(SELECT id FROM albums WHERE user_id = ?)", id).size
+  end
+  
   private
   
   def create_hashed_password
