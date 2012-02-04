@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class AvatarUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -9,13 +9,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
-
-  version(:thumb) { resize_to_fill(100, 100) }
   
+  version(:thumb) { resize_to_fill(150, 150) }
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/avatars/#{model.id}"
+    "uploads/photos/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

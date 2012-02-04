@@ -1,0 +1,11 @@
+<h1><%= I18n.t('views.photo.add_photos') %></h1>
+<%= render 'messages' %>
+<%= form_for([@photo_album, @photo]) do |f| %>
+  <div class="field">
+    <%= f.label :file %><br />
+    <%= f.file_field :file %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

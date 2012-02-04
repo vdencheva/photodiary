@@ -30,3 +30,14 @@
     </ul>
   </div>
 <% end %>
+
+<% if !defined?(@photo).nil? && @photo.errors.any? %>
+  <div class="error_explanation">
+    <h2><%= (@photo.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
+    <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

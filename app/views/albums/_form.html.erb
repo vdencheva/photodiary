@@ -1,6 +1,5 @@
+<%= render 'messages' %>
 <%= form_for([current_user, @album]) do |f| %>
-  <%= render 'messages' %>
-
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>

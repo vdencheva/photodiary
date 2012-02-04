@@ -1,0 +1,39 @@
+<h1>Listing photos</h1>
+
+<table>
+  <tr>
+    <th>Album</th>
+    <th>File</th>
+    <th>Title</th>
+    <th>Date taken</th>
+    <th>Place taken</th>
+    <th>Camera</th>
+    <th>Model</th>
+    <th>Other</th>
+    <th>Views</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= photo.album_id %></td>
+    <td><%= photo.file %></td>
+    <td><%= photo.title %></td>
+    <td><%= photo.date_taken %></td>
+    <td><%= photo.place_taken %></td>
+    <td><%= photo.camera %></td>
+    <td><%= photo.model %></td>
+    <td><%= photo.other %></td>
+    <td><%= photo.views %></td>
+    <td><%= link_to 'Show', album_photo_path(@photo_album, photo) %></td>
+    <td><%= link_to 'Edit', edit_album_photo_path(@photo_album, photo) %></td>
+    <td><%= link_to 'Destroy', album_photo_path(@photo_album, photo), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Photo', new_album_photo_path(@photo_album) %>

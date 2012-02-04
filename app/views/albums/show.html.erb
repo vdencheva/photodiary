@@ -18,3 +18,8 @@
   <b><%= I18n.t('activerecord.attributes.album.description') %>:</b>
   <%= @album.description %>
 </p>
+
+<p>
+  <%= link_to "View photos", album_photos_path(@album) %> | 
+  <%= link_to "Add photo", new_album_photo_path(@album) %>
+</p>

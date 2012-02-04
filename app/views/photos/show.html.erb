@@ -1,0 +1,55 @@
+<h1>Photo Preview</h1>
+<%= render 'messages' %>
+
+<p>
+  <b>Album:</b>
+  <%= @photo_album.title %>
+</p>
+
+<p>
+  <b>File:</b>
+  <% if @photo.file? %>
+      <%= image_tag(@photo.file.thumb.url) %><br />
+  <% else %>
+    -   
+  <% end %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @photo.title %>
+</p>
+
+<p>
+  <b>Date taken:</b>
+  <%= @photo.date_taken %>
+</p>
+
+<p>
+  <b>Place taken:</b>
+  <%= @photo.place_taken %>
+</p>
+
+<p>
+  <b>Camera:</b>
+  <%= @photo.camera %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @photo.model %>
+</p>
+
+<p>
+  <b>Other:</b>
+  <%= @photo.other %>
+</p>
+
+<p>
+  <b>Views:</b>
+  <%= @photo.views %>
+</p>
+
+
+<%= link_to 'Edit', edit_album_photo_path(@photo_album, @photo) %> |
+<%= link_to 'Back', album_photos_path(@photo_album) %>

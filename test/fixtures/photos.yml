@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  album_id: 
+  file: MyString
+  title: MyString
+  date_taken: 2012-02-03 02:14:48
+  place_taken: MyString
+  camera: MyString
+  model: MyString
+  other: MyText
+  views: 1
+
+two:
+  album_id: 
+  file: MyString
+  title: MyString
+  date_taken: 2012-02-03 02:14:48
+  place_taken: MyString
+  camera: MyString
+  model: MyString
+  other: MyText
+  views: 1

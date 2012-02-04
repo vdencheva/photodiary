@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="nav">
+  <%= link_to I18n.t('views.home'), root_path %> | 
   <%= link_to I18n.t('views.user.list'), users_path %> | 
   <% if logged_in? %>
     <%= link_to I18n.t('views.user.profile'), session[:current_user] %> |

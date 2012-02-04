@@ -1,6 +1,11 @@
 Photodiary::Application.routes.draw do
+
   resources :users do
     resources :albums
+  end
+  
+  resources :albums do
+    resources :photos
   end
   
   match '/login',  :to => 'users#login', :via => :get
