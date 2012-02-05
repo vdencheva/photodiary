@@ -11,19 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120205150420) do
+ActiveRecord::Schema.define(:version => 20120205212240) do
 
   create_table "albums", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
+    t.integer  "user_id",     :null => false
+    t.string   "title",       :null => false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "albums", ["user_id", "title"], :name => "index_albums_on_user_id_and_title", :unique => true
+
   create_table "photos", :force => true do |t|
-    t.integer  "album_id"
-    t.string   "file"
+    t.integer  "album_id",                         :null => false
+    t.string   "file",                             :null => false
     t.string   "title"
     t.datetime "date_taken"
     t.string   "place_taken"
@@ -41,14 +43,17 @@ ActiveRecord::Schema.define(:version => 20120205150420) do
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
+    t.string   "username",        :null => false
     t.string   "hashed_password"
     t.string   "full_name"
-    t.string   "email"
+    t.string   "email",           :null => false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
