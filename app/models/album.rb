@@ -3,7 +3,7 @@ class Album < ActiveRecord::Base
   has_many :photos
   
   validates_presence_of :title
-  validates_uniqueness_of :title, :if => -> { title.present? }
+  validates_uniqueness_of :title, :scope => :user_id, :if => -> { title.present? }
   
   def first_photo
     result = Photo.where(:album_id => id).order("id ASC").limit(1)
