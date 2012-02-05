@@ -11,7 +11,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # storage :fog
   
   version(:thumb) { resize_to_fill(160, 120) }
-  version(:preview) { resize_to_fill(720, 478) }
+  version(:preview) { resize_to_limit(720, 720) }
   
 
   # Override the directory where uploaded files will be stored.

@@ -8,33 +8,14 @@
 <%= render 'messages' %>
 
 <%= form_for([@album, @photo]) do |f| %>
-  <div class="field">
-    <%= f.label :file %><br />
-    <%= f.text_field :file, :disabled => true %>
-  </div>
+  <%= image_tag(@photo.file.preview.url) %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :date_taken %><br />
-    <%= f.text_field :date_taken %>
-  </div>
-  <div class="field">
     <%= f.label :place_taken %><br />
     <%= f.text_field :place_taken %>
-  </div>
-  <div class="field">
-    <%= f.label :camera %><br />
-    <%= f.text_field :camera %>
-  </div>
-  <div class="field">
-    <%= f.label :model %><br />
-    <%= f.text_field :model %>
-  </div>
-  <div class="field">
-    <%= f.label :other %><br />
-    <%= f.text_area :other %>
   </div>
   <div class="actions">
     <%= f.submit %>

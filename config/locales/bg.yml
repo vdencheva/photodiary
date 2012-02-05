@@ -30,15 +30,21 @@
         remember_me: 'Запомни ме на този компютър'
         photo: 'Снимка'
         remove_photo: 'Изтриване на снимката'
-        album: 'албум'
-        albums: 'албума'
-        photos: 'снимки'
       album:
         title: 'Заглавие'
         description: 'Описание'
         user: 'Потребител'
       photo:
         file: Файл
+        title: Заглавие
+        camera_model: 'Фотоапарат'
+        date_taken: 'Заснето на'
+        place_taken: 'Място на заснемане'
+        exposure_time: 'Експозиция'
+        f_number: 'Апертура'
+        iso_speed: 'ISO'
+        flash: 'Светкавица'
+        flength_35mm_film: 'Фокусно растояние, приравнено към 35mm стандарт'
   helpers:
     submit:
       create: 'Създаване'
@@ -74,6 +80,11 @@
       logout_succeeded: 'Излязохте успешно от профила си.'
       logout_error: 'Грешка. В момента не можете да излезете от профила си. Моля, опитайте отново.'
       profile: 'Моят профил'
+      total: 'Общо'
+      album: 'албум'
+      albums: 'албума'
+      in: 'в'
+      photos: 'снимки'
     album:
       new_album: 'Нов албум'
       edit_album: 'Редактиране на албум'
@@ -99,6 +110,9 @@
       previous: 'Предишна снимка'
       next: 'Следваща снимка'
       author: 'Автор'
+      viewed: 'Снимката е видяна '
+      times: ' пъти'
+      time: ' път'
       
       
       

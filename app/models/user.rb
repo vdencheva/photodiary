@@ -41,7 +41,6 @@ class User < ActiveRecord::Base
     Album.where(:user_id => id).size
   end
   
-  
   def photos_count
     Photo.where("album_id IN(SELECT id FROM albums WHERE user_id = ?)", id).size
   end

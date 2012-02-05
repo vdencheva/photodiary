@@ -23,36 +23,63 @@
   </div>
   <div class="clear"></div>
   <div class="previewInfo">
-  
-      <p><%= @photo.title %></p>
+      <% if @photo.title %>
+        <h2>"<%= @photo.title %>"</h2>
+      <% end %>
       <p>
         <b><%= I18n.t('views.photo.author') %>:</b>
         <%= link_to @user.username, user_path(@user) %>
       </p>
+      <% if @photo.place_taken %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.place_taken') %>:</b>
+          <%= @photo.place_taken %>
+        </p>
+      <% end %>
+      <% if @photo.camera_model %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.camera_model') %>:</b>
+          <%= @photo.camera_model %>
+        </p>
+      <% end %>
+      <% if @photo.date_taken %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.date_taken') %>:</b>
+          <%= @photo.date_taken %>
+        </p>
+      <% end %>
+      <% if @photo.exposure_time %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.exposure_time') %>:</b>
+          <%= @photo.exposure_time %>
+        </p>
+      <% end %>
+      <% if @photo.f_number %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.f_number') %>:</b>
+          <%= @photo.f_number %>
+        </p>
+      <% end %>
+      <% if @photo.iso_speed %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.iso_speed') %>:</b>
+          <%= @photo.iso_speed %>
+        </p>
+      <% end %>
+      <% if @photo.flash %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.flash') %>:</b>
+          <%= @photo.flash %>
+        </p>
+      <% end %>
+      <% if @photo.flength_35mm_film %>
+        <p>
+          <b><%= I18n.t('activerecord.attributes.photo.flength_35mm_film') %>:</b>
+          <%= @photo.flength_35mm_film %>
+        </p>
+      <% end %>
       <p>
-      <p>
-        <b>Date taken:</b>
-        <%= @photo.date_taken %>
-      </p>
-      <p>
-        <b>Place taken:</b>
-        <%= @photo.place_taken %>
-      </p>
-      <p>
-        <b>Camera:</b>
-        <%= @photo.camera %>
-      </p>
-      <p>
-        <b>Model:</b>
-        <%= @photo.model %>
-      </p>
-      <p>
-        <b>Other:</b>
-        <%= @photo.other %>
-      </p>
-      <p>
-        <b>Views:</b>
-        <%= @photo.views %>
+        <b><%= I18n.t('views.photo.viewed') %><%= @photo.views.to_s %><%= @photo.views == 1 ? I18n.t('views.photo.time') : I18n.t('views.photo.times') %></b>
       </p>
     </div>
     <div class="clear"></div>

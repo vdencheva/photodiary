@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
   # GET /albums/:album_id/photos/:id
   def show
     @photo = @album.photos.find(params[:id])
+    @photo.increment_views
   end
 
   # GET /albums/:album_id/photos/new

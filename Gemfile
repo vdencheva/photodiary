@@ -34,6 +34,7 @@ gem "rake", "0.8.7"
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'exifr'
 
 group :development do
   gem 'ruby-debug19'
