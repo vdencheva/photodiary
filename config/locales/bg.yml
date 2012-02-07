@@ -45,6 +45,9 @@
         iso_speed: 'ISO'
         flash: 'Светкавица'
         flength_35mm_film: 'Фокусно растояние, приравнено към 35mm стандарт'
+        latitude: 'Географска ширина'
+        longtitude: 'Географска дължина'
+        gps_address: 'GPS местоположение'
   helpers:
     submit:
       create: 'Създаване'

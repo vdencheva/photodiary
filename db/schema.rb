@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120205212240) do
+ActiveRecord::Schema.define(:version => 20120207015333) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(:version => 20120205212240) do
     t.string   "iso_speed"
     t.string   "flash"
     t.string   "flength_35mm_film"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "gps_address"
   end
 
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"

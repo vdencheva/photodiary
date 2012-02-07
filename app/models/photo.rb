@@ -38,5 +38,10 @@ class Photo < ActiveRecord::Base
     write_attribute(:iso_speed, get_iso_speed)
     write_attribute(:flength_35mm_film, get_focal_length_in_35mm_film)
     write_attribute(:flash, get_flash)
+    lat = get_latitude
+    long = get_longitude
+    write_attribute(:latitude, lat)
+    write_attribute(:longitude, long)
+    write_attribute(:gps_address, get_gps_address(lat, long)) if lat && long
   end
 end
