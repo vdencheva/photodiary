@@ -59,9 +59,7 @@
     error_occur: 'Възникна грешка'
     mustbeloged_error: 'Трябва да сте регистриран потребител, за да достъпите тази страница.'
     mustbeyours_error: 'Нямате права, за да достъпите този ресурс.'
-    sitename: 'Photo Diary'
-    has: 'Има '
-    and: ' и '
+    sitename: 'Фото Дневник'
     user:
       registration:  'Регистрация'
       edit_user: 'Редактиране на потребител'
@@ -84,7 +82,11 @@
       album: 'албум'
       albums: 'албума'
       in: 'в'
+      photo: 'снимка'
       photos: 'снимки'
+      album: 'албум'
+      is: 'е'
+      are: 'са'
     album:
       new_album: 'Нов албум'
       edit_album: 'Редактиране на албум'
@@ -113,6 +115,8 @@
       viewed: 'Снимката е видяна '
       times: ' пъти'
       time: ' път'
+      belongs_to: 'на'
+      all_albums: 'Всички албуми на автора'
       
       
       

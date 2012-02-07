@@ -23,56 +23,60 @@
   </div>
   <div class="clear"></div>
   <div class="previewInfo">
-      <% if @photo.title %>
+      <% unless @photo.title.nil? || @photo.title.empty? %>
         <h2>"<%= @photo.title %>"</h2>
       <% end %>
       <p>
         <b><%= I18n.t('views.photo.author') %>:</b>
-        <%= link_to @user.username, user_path(@user) %>
+        <% if @user.has_photo? %>
+          <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+        <% else %>
+          <%= link_to @user.username, user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+        <% end %>
       </p>
-      <% if @photo.place_taken %>
+      <% unless @photo.place_taken.nil? || @photo.place_taken.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.place_taken') %>:</b>
           <%= @photo.place_taken %>
         </p>
       <% end %>
-      <% if @photo.camera_model %>
+      <% unless @photo.camera_model.nil? || @photo.camera_model.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.camera_model') %>:</b>
           <%= @photo.camera_model %>
         </p>
       <% end %>
-      <% if @photo.date_taken %>
+      <% unless @photo.date_taken.nil? || @photo.date_taken == '' %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.date_taken') %>:</b>
           <%= @photo.date_taken %>
         </p>
       <% end %>
-      <% if @photo.exposure_time %>
+      <% unless @photo.exposure_time.nil? || @photo.exposure_time.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.exposure_time') %>:</b>
           <%= @photo.exposure_time %>
         </p>
       <% end %>
-      <% if @photo.f_number %>
+      <% unless @photo.f_number.nil? || @photo.f_number.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.f_number') %>:</b>
           <%= @photo.f_number %>
         </p>
       <% end %>
-      <% if @photo.iso_speed %>
+      <% unless @photo.iso_speed.nil? || @photo.iso_speed.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.iso_speed') %>:</b>
           <%= @photo.iso_speed %>
         </p>
       <% end %>
-      <% if @photo.flash %>
+      <% unless @photo.flash.nil? || @photo.flash.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.flash') %>:</b>
           <%= @photo.flash %>
         </p>
       <% end %>
-      <% if @photo.flength_35mm_film %>
+      <% unless @photo.flength_35mm_film.nil? || @photo.flength_35mm_film.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.flength_35mm_film') %>:</b>
           <%= @photo.flength_35mm_film %>

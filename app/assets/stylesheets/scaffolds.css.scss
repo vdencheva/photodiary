@@ -173,6 +173,16 @@ div {
   width: 100%;
 }
 
+.row .albumTitle h1.home {
+  margin-top: 0;
+  line-height: 62px;
+  background: transparent url('/assets/logohome.png') no-repeat 0 0;
+}
+
+.row .albumTitle span {
+  margin-left: 100px;
+}
+
 .row .albumTitle .albumLinks {
   padding: 0 0 20px;
 }
@@ -184,7 +194,7 @@ div {
 
 /* Users */
 .row .usersHolder .usrHolder {
-  width: 100px;
+  width: 110px;
   float: left;
   position: relative;
 }

@@ -34,15 +34,27 @@ class User < ActiveRecord::Base
   end
   
   def avatar
-    photo.url ? photo.thumb.url : "/assets/noavatar.png"
+    has_photo? ? photo.thumb.url : "/assets/noavatar.png"
+  end
+  
+  def has_photo?
+    photo.url ? true : false
+  end
+  
+  def small_avatar
+    has_photo? ? photo.small_thumb.url : "/assets/noavatar.png"
   end
   
   def albums_count
-    Album.where(:user_id => id).size
+    @albums = Album.where(:user_id => id).size if @albums.nil?
+    @albums
   end
   
   def photos_count
-    Photo.where("album_id IN(SELECT id FROM albums WHERE user_id = ?)", id).size
+    if @photos.nil?
+      @photos = Photo.where("album_id IN(SELECT id FROM albums WHERE user_id = ?)", id).size
+    end
+    @photos
   end
   
   private

@@ -9,4 +9,9 @@ class Album < ActiveRecord::Base
     result = Photo.where(:album_id => id).order("id ASC").limit(1)
     result.first ? result.first.file.thumb.url : "/assets/nophotos.png"
   end
+  
+  def photos_count
+    @photos = Photo.where(:album_id => id).size if @photos.nil?
+    @photos
+  end
 end

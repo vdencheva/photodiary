@@ -1,13 +1,22 @@
 <div class="albumTitle">
-  <h1><%= @album.title %></h1>
-  <% if has_album_rights? %>
-    <div class="albumLinks">
+  <h1>
+    <%= '"'+@album.title+'"'+' '+I18n.t('views.photo.belongs_to')+' ' %>
+    <% if @user.has_photo? %>
+      <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+    <% else %>
+      <%= link_to @user.username, user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+    <% end %>
+  </h1>
+  <div class="albumLinks">
+    <% if has_album_rights? %> 
       <%= link_to I18n.t('views.photo.add_photo'), new_album_photo_path(@album) %> |
       <%= link_to I18n.t('views.edit'), edit_user_album_path(@user, @album) %> |
       <%= link_to I18n.t('views.delete'), user_album_path(@user, @album), confirm: I18n.t('views.album.delete_msg'), method: :delete %> |
-    </div>
+    <% else %>
+      (<%= @album.photos_count.to_s+' '+(@album.photos_count == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos')) %>)
   <% end %>
-</div>
+  </div>
+  </div>
   
 <%= render 'messages' %>
 

@@ -10,7 +10,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  version(:small_thumb) { resize_to_fill(40, 40) }
   version(:thumb) { resize_to_fill(100, 100) }
+  version(:preview) { resize_to_limit(240, 240) }
   
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

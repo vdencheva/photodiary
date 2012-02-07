@@ -22,7 +22,7 @@
   </div>
   <% if @user.photo? %>
     <div class="field">
-      <%= image_tag(@user.photo.thumb.url) %><br />
+      <%= image_tag(@user.photo.preview.url) %><br />
       <%= f.check_box :remove_photo %>
       <%= f.label :remove_photo %>
     </div>

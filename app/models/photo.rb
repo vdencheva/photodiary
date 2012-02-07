@@ -23,6 +23,10 @@ class Photo < ActiveRecord::Base
     increment!(:views)
   end
   
+  def self.latest(number)
+    order("id DESC").limit(number)
+  end
+  
   private
   
   def set_photo_attributes

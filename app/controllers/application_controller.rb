@@ -31,24 +31,24 @@ class ApplicationController < ActionController::Base
   end
   
   def require_user_ownership
-    unless current_user.id == @user.id
+    unless current_user && current_user.id == @user.id
       flash[:error] = I18n.t('views.mustbeyours_error')
       redirect_to root_url
     end
   end
   
   def require_album_ownership
-    unless current_user.id == @album.user_id
+    unless current_user && current_user.id == @album.user_id
       flash[:error] = I18n.t('views.mustbeyours_error')
       redirect_to root_url
     end
   end
   
   def has_album_rights?
-    @album.user_id == current_user.id ? true : false
+    (current_user && @album.user_id == current_user.id) ? true : false
   end
   
   def has_user_riths?
-    @user.id == current_user.id ? true : false
+    (current_user && @user.id == current_user.id) ? true : false
   end
 end

@@ -3,7 +3,12 @@
     <% if has_user_riths? %>
       <%= I18n.t('views.album.my_albums') %>
     <% else %>
-      <%= I18n.t('views.album.list') %><%= link_to @user.username, user_path(@user) %>
+      <%= I18n.t('views.album.list') %>
+      <% if @user.has_photo? %>
+        <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+      <% else %>
+        <%= link_to @user.username, user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+      <% end %>
     <% end %>
   </h1>
   <% if has_user_riths? %>
@@ -16,7 +21,7 @@
 
 <div class="photoHolder">
   <% @albums.each_with_index do |album, i| %>
-    <div class="objHolder bm <%= 'rm' if i % 5 != 4 %>">
+    <div class="objHolder bm <%= 'rm' if i % 7 != 6 %>">
       <%= link_to image_tag(album.first_photo, :border=>0), album_photos_path(album), :title => album.title, :class => "photoLink" %>
     </div>
   <% end %>

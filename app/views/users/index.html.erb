@@ -1,11 +1,11 @@
 <div class="albumTitle">
-  <h1><%= I18n.t('views.user.users_of')+I18n.t('views.sitename') %></h1>
+  <h1><%= I18n.t('views.user.users_of')+I18n.t('views.sitename')+' '+(@users.size == 1 ? I18n.t('views.user.is') : I18n.t('views.user.are'))+' '+@users.size.to_s%></h1>
 </div>
 <%= render 'messages' %>
 
 <div class="usersHolder">
   <% @users.each_with_index do |user, i| %>
-    <div class="usrHolder bm <%= 'rm' if i % 5 != 4 %>">
+    <div class="usrHolder bm rm">
       <%= link_to image_tag(user.avatar, :border=>0), user_path(user), :title => user.username, :class => "userLink" %>
     </div>
   <% end %>
