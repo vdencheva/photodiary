@@ -1,5 +1,8 @@
+<% page_title = I18n.t('views.sitename') %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
-  <h1 class="home"><span><%= I18n.t('views.sitename') %></span></h1> 
+  <h1 class="home"><span><%= page_title %></span></h1> 
   <% unless logged_in? %>
     <div class="albumLinks">
       <%= link_to I18n.t('views.user.login'), login_path %> |

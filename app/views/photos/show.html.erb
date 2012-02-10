@@ -1,3 +1,10 @@
+<% if @photo.title && !@photo.title.empty? %>
+  <% page_title = @photo.title+' - '+@album.title %>
+<% else %>
+  <% page_title = @album.title %>
+<% end %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
   <h1><%= link_to @album.title, album_photos_path(@album) %></h1>
   <% if has_album_rights? %>
@@ -76,7 +83,7 @@
           <%= @photo.flash %>
         </p>
       <% end %>
-      <% if @photo.flength_35mm_film && !@photo.flength_35mm_film.nil? %>
+      <% if @photo.flength_35mm_film && !@photo.flength_35mm_film.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.flength_35mm_film') %>:</b>
           <%= @photo.flength_35mm_film %>
@@ -94,7 +101,7 @@
           <%= @photo.longitude %>
         </p>
       <% end %>
-      <% if @photo.gps_address && !@photo.gps_address.nil? %>
+      <% if @photo.gps_address && !@photo.gps_address.empty? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.gps_address') %>:</b>
           <%= @photo.gps_address %>

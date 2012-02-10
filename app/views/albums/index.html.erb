@@ -1,9 +1,13 @@
+<% if has_user_riths? %>
+  <% page_title = I18n.t('views.album.my_albums') %>
+<% else %>
+  <% page_title = I18n.t('views.album.list')+@user.username %>
+<% end %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
-  <h1>
-    <% if has_user_riths? %>
-      <%= I18n.t('views.album.my_albums') %>
-    <% else %>
-      <%= I18n.t('views.album.list') %>
+  <h1><%= page_title %>
+    <% if !has_user_riths? %>
       <% if @user.has_photo? %>
         <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
       <% else %>
@@ -20,10 +24,14 @@
 <%= render 'messages' %>
 
 <div class="photoHolder">
-  <% @albums.each_with_index do |album, i| %>
-    <div class="objHolder bm <%= 'rm' if i % 7 != 6 %>">
-      <%= link_to image_tag(album.first_photo, :border=>0), album_photos_path(album), :title => album.title, :class => "photoLink" %>
-    </div>
+  <% if @albums.size > 0 %>
+    <% @albums.each_with_index do |album, i| %>
+      <div class="objHolder bm <%= 'rm' if i % 7 != 6 %>">
+        <%= link_to image_tag(album.first_photo, :border=>0), album_photos_path(album), :title => album.title, :class => "photoLink" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= I18n.t('views.album.no_albums') %></p>
   <% end %>
   <div class="clear"></div>
 </div>

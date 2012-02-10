@@ -1,5 +1,8 @@
+<% page_title = I18n.t('views.album.edit_album') %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
-  <h1><%= I18n.t('views.album.edit_album') %></h1>
+  <h1><%= page_title %></h1>
   <div class="albumLinks">
     <%= link_to I18n.t('views.photo.add_photo'), new_album_photo_path(@album) %> |
     <%= link_to I18n.t('views.preview'), album_photos_path(@album) %> |

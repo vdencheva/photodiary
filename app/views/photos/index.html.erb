@@ -1,6 +1,9 @@
+<% page_title = '"'+@album.title+'"'+' '+I18n.t('views.photo.belongs_to')+' '+@user.username %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
   <h1>
-    <%= '"'+@album.title+'"'+' '+I18n.t('views.photo.belongs_to')+' ' %>
+    <%= page_title %>
     <% if @user.has_photo? %>
       <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
     <% else %>
@@ -22,10 +25,14 @@
 <%= render 'messages' %>
 
 <div class="photoHolder">
-  <% @photos.each_with_index do |photo, i| %>
-    <div class="objHolder bm <%= 'rm' if i % 5 != 4 %>">
-      <%= link_to image_tag(photo.file.thumb.url, :border=>0), album_photo_path(@album, photo), :title => photo.title, :class => "photoLink" %>
-    </div>
+  <% if @photos.size > 0 %>
+    <% @photos.each_with_index do |photo, i| %>
+      <div class="objHolder bm <%= 'rm' if i % 5 != 4 %>">
+        <%= link_to image_tag(photo.file.thumb.url, :border=>0), album_photo_path(@album, photo), :title => photo.title, :class => "photoLink" %>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= I18n.t('views.photo.no_photos') %></p>
   <% end %>
   <div class="clear"></div>
 </div>

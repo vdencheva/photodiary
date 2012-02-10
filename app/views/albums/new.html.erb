@@ -1,5 +1,8 @@
+<% page_title = I18n.t('views.album.new_album') %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
-  <h1><%= I18n.t('views.album.new_album') %></h1>
+  <h1><%= page_title %></h1>
 </div>
 
 <%= render 'form' %>

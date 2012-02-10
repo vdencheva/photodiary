@@ -1,5 +1,8 @@
+<% page_title = I18n.t('views.user.users_of')+I18n.t('views.sitename') %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
-  <h1><%= I18n.t('views.user.users_of')+I18n.t('views.sitename')+' '+(@users.size == 1 ? I18n.t('views.user.is') : I18n.t('views.user.are'))+' '+@users.size.to_s%></h1>
+  <h1><%= page_title+' '+(@users.size == 1 ? I18n.t('views.user.is') : I18n.t('views.user.are'))+' '+@users.size.to_s%></h1>
 </div>
 <%= render 'messages' %>
 

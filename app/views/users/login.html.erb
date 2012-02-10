@@ -1,4 +1,9 @@
-<h1><%= I18n.t('views.user.login') %></h1>
+<% page_title = I18n.t('views.user.login') %>
+<% content_for :page_title, page_title %>
+
+<div class="albumTitle">
+  <h1><%= page_title %></h1>
+</div>
 <%= render 'messages' %>
 
 <%= form_for(@user, :url => login_path) do |f| %>

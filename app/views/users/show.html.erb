@@ -1,11 +1,12 @@
+<% if has_user_riths? %>
+  <% page_title = I18n.t('views.user.profile') %>
+<% else %>
+  <% page_title = I18n.t('views.user.preview_user')+' '+@user.username %>
+<% end %>
+<% content_for :page_title, page_title %>
+
 <div class="albumTitle">
-  <h1>
-    <% if has_user_riths? %>
-      <%= I18n.t('views.user.profile') %>
-    <% else %>
-      <%= I18n.t('views.user.preview_user') %> <%= @user.username %>
-    <% end %>
-  </h1>
+  <h1><%= page_title %></h1>
   <% if has_user_riths? %>
     <div class="albumLinks">
       <%= link_to I18n.t('views.edit'), edit_user_path(current_user) %> |
