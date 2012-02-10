@@ -13,7 +13,8 @@
       <%= link_to I18n.t('views.edit'), edit_user_album_path(@user, @album) %> |
       <%= link_to I18n.t('views.delete'), user_album_path(@user, @album), confirm: I18n.t('views.album.delete_msg'), method: :delete %> |
     <% else %>
-      (<%= @album.photos_count.to_s+' '+(@album.photos_count == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos')) %>)
+      <% photos_cnt = @album.photos_count %>
+      (<%= photos_cnt.to_s+' '+(photos_cnt == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos')) %>)
   <% end %>
   </div>
   </div>

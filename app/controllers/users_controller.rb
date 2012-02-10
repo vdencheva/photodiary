@@ -30,7 +30,7 @@
       flash[:message] = I18n.t('views.user.created')
       redirect_to @user
     else
-       render action: "new"
+       render :new
     end
   end
 
@@ -47,7 +47,7 @@
       flash[:message] = I18n.t('views.user.updated')
       redirect_to @user
     else
-      render action: "edit"
+      render :edit
     end
   end
 
@@ -75,7 +75,7 @@
     else
       flash.now[:error] = I18n.t('views.user.login_error')
       @user = User.new
-      render action: "login"
+      render :login
     end
   end
   

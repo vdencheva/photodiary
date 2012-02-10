@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
       flash[:message] = I18n.t('views.photo.created')
       redirect_to [@album, @photo]
     else
-      render action: "new"
+      render :new
     end
   end
 
@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
       flash[:message] = I18n.t('views.photo.updated')
       redirect_to [@album, @photo]
     else
-      render action: "edit"
+      render :edit
     end
   end
 

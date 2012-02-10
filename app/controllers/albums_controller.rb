@@ -33,7 +33,7 @@ class AlbumsController < ApplicationController
       flash[:message] = I18n.t('views.album.created')
       redirect_to :controller => 'albums', :action => 'index'
     else
-      render action: "new"
+      render :new
     end
   end
 
@@ -46,7 +46,7 @@ class AlbumsController < ApplicationController
       flash[:message] = I18n.t('views.album.updated')
       redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id]
     else
-      render action: "edit"
+      render :edit
     end
   end
 

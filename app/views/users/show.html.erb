@@ -34,6 +34,8 @@
 </p>
 
 <p>
-  <b><%= link_to I18n.t('views.user.total')+' '+@user.photos_count.to_s+' '+(@user.photos_count == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos'))+' '+I18n.t('views.user.in')+' '+@user.albums_count.to_s+' '+(@user.albums_count == 1 ? I18n.t('views.user.album') : I18n.t('views.user.albums')), user_albums_path(@user) %></b>
+  <% photos_cnt = @user.photos_count %>
+  <% albums_cnt = @user.albums_count %>
+  <b><%= link_to I18n.t('views.user.total')+' '+photos_cnt.to_s+' '+(photos_cnt == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos'))+' '+I18n.t('views.user.in')+' '+albums_cnt.to_s+' '+(albums_cnt == 1 ? I18n.t('views.user.album') : I18n.t('views.user.albums')), user_albums_path(@user) %></b>
 </p>
 

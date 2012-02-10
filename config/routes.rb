@@ -1,5 +1,7 @@
 Photodiary::Application.routes.draw do
 
+  root :to => 'home#index'
+  
   resources :users do
     resources :albums
   end
@@ -11,9 +13,6 @@ Photodiary::Application.routes.draw do
   match '/login',  :to => 'users#login', :via => :get
   match '/login',  :to => 'users#login_process', :via => :post
   match '/logout',  :to => 'users#logout'
-
-  get "home/index"
-  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

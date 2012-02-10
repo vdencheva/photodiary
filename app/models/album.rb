@@ -11,7 +11,6 @@ class Album < ActiveRecord::Base
   end
   
   def photos_count
-    @photos = Photo.where(:album_id => id).size if @photos.nil?
-    @photos
+    photos.size
   end
 end

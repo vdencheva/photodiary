@@ -2,6 +2,7 @@
 
 class User < ActiveRecord::Base  
   has_many :albums
+  has_many :photos, :through => :albums
   
   attr_accessor :password, :remove_photo
   
@@ -46,15 +47,11 @@ class User < ActiveRecord::Base
   end
   
   def albums_count
-    @albums = Album.where(:user_id => id).size if @albums.nil?
-    @albums
+    albums.size
   end
   
   def photos_count
-    if @photos.nil?
-      @photos = Photo.where("album_id IN(SELECT id FROM albums WHERE user_id = ?)", id).size
-    end
-    @photos
+    photos.size
   end
   
   private
