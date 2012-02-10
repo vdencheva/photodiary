@@ -1,8 +1,9 @@
 ﻿require 'digest/sha1'
 
 class User < ActiveRecord::Base  
-  has_many :albums
+  has_many :albums, :dependent => :destroy
   has_many :photos, :through => :albums
+  has_many :comments, :dependent => :destroy
   
   attr_accessor :password, :remove_photo
   
