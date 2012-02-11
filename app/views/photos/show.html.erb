@@ -113,3 +113,34 @@
     </div>
     <div class="clear"></div>
 </div>
+
+<div class="commentsHolder" id="comments">
+  <h2><%= I18n.t('views.comment.comments') %></h2>
+  <% if @photo.comments.count > 0 %>
+    <% @photo.comments.each do |c| %>
+      <div class="objHolder" id="comment-<%= c.id %>">
+        <%= link_to image_tag(c.user.avatar, :border=>0), user_albums_path(c.user), :title => I18n.t('views.album.list')+c.user.username %>
+        <div class="comment">
+          <p><%= c.body %></p>
+          <% if has_comment_rights?(c) %>
+            <%= link_to I18n.t('views.edit'), edit_album_photo_comment_path(@album, @photo, c), :class => :commentEdit %> |
+          <% end %>
+          <span class="commentDate">
+            <% link_text = I18n.t('views.comment.published_on')+c.created_at.strftime('%d.%m.%Y %H:%M') %>
+            <% if c.updated_at > c.created_at %>
+              <% link_text += ', '+I18n.t('views.comment.last_edit')+c.updated_at.strftime('%d.%m.%Y %H:%M') %>
+            <% end %>
+            <%= link_to link_text, album_photo_path(@album, @photo)+'/#comment-'+c.id.to_s %>
+          </span>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= I18n.t('views.comment.no_comments') %></p>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+<% @comment = @photo.comments.build %>
+<%= render 'comments/form' %>

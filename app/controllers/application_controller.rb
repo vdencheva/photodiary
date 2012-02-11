@@ -44,6 +44,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_comment_ownership
+    unless current_user && current_user.id == @comment.user_id
+      flash[:error] = I18n.t('views.mustbeyours_error')
+      redirect_to root_url
+    end
+  end
+  
   def has_album_rights?
     (current_user && @album.user_id == current_user.id) ? true : false
   end

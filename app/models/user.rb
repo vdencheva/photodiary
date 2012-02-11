@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   
   attr_accessor :password, :remove_photo
+    
+  attr_protected :username, :email, :password
   
   mount_uploader :photo, AvatarUploader
   
@@ -48,11 +50,11 @@ class User < ActiveRecord::Base
   end
   
   def albums_count
-    albums.size
+    albums.count
   end
   
   def photos_count
-    photos.size
+    photos.count
   end
   
   private

@@ -256,4 +256,31 @@ div {
   width: 100%;
 }
 
+/* Comments */
+.commentsHolder {
+  margin-bottom: 15px;
+}
+
+.commentsHolder .objHolder {
+  padding-bottom: 15px;
+  background: transparent url('/assets/dots.gif') repeat-x left bottom;
+}
+
+.commentsHolder .objHolder img {
+  float: left;
+  margin-right: 15px;
+}
+
+.commentsHolder .objHolder .commentDate a {
+  margin-top: 20px;
+  font-size: 10px;
+  color: #CCC;
+  text-decoration: none;
+}
+
+.commentsHolder .objHolder a.commentEdit {
+  margin-right: 10px;
+}
+
+
 

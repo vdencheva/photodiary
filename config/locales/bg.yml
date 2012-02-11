@@ -35,8 +35,8 @@
         description: 'Описание'
         user: 'Потребител'
       photo:
-        file: Файл
-        title: Заглавие
+        file: 'Файл'
+        title: 'Заглавие'
         camera_model: 'Фотоапарат'
         date_taken: 'Заснето на'
         place_taken: 'Място на заснемане'
@@ -48,6 +48,8 @@
         latitude: 'Географска ширина'
         longtitude: 'Географска дължина'
         gps_address: 'GPS местоположение'
+      comment:
+        body: 'Коментар'
   helpers:
     submit:
       create: 'Създаване'
@@ -122,6 +124,17 @@
       belongs_to: 'на'
       all_albums: 'Всички албуми на автора'
       no_photos: 'В този албум няма намерени снимки.'
+    comment:
+      no_comments: 'Няма коментари.'
+      comments: 'Коментари'
+      publish: 'Публикуване'
+      new_comment: 'Нов коментар'
+      edit_comment: 'Редактиране на коментар'
+      back_to_photo: 'Обратно към снимката'
+      published_on: 'Публикувано на '
+      last_edit: 'Последна редакция на '
+      created: 'Коментарът е публикуван успешно.'
+      updated: 'Коментарът е редактиран успешно.'
       
       
       

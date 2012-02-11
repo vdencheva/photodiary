@@ -1,0 +1,22 @@
+<% if logged_in? %>
+  <% if @comment.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= (@comment.errors.count == 1 ? I18n.t('views.error_occur') : I18n.t('views.errors_occur')) %>:</h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form_for([@photo.album, @photo, @comment]) do |f| %>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit I18n.t('views.comment.publish') %>
+    </div>
+  <% end %>
+<% end %>

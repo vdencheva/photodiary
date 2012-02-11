@@ -2,13 +2,15 @@ class Photo < ActiveRecord::Base
   include ExifData
   
   belongs_to :album
-  has_many :comments, :dependent => :destroy
+  has_many :comments, :dependent => :destroy, order: 'comments.created_at ASC'
   
   mount_uploader :file, PhotoUploader
   
   before_create :set_photo_attributes
   
   validates_presence_of :file, :on => :create
+  
+  attr_protected :album_id
   
   def previous_photo_id
     result = Photo.where("album_id = ? AND id < ?", album_id, id).order("id DESC").limit(1)

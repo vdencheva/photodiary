@@ -1,0 +1,11 @@
+<% page_title = I18n.t('views.comment.edit_comment') %>
+<% content_for :page_title, page_title %>
+
+<div class="albumTitle">
+  <h1><%= page_title %></h1>
+  <div class="albumLinks">
+    <%= link_to I18n.t('views.comment.back_to_photo'), album_photo_path(@photo.album, @photo) %> |
+  </div>
+</div>
+
+<%= render 'form' %>
