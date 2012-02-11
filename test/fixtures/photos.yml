@@ -1,23 +1,52 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  album_id: 
-  file: MyString
-  title: MyString
+  album: one
+  file: File.open(Rails.root.join("test/fixtures/DSC_3207.jpg"))
+  title: PhotoOne
   date_taken: 2012-02-03 02:14:48
   place_taken: MyString
-  camera: MyString
-  model: MyString
-  other: MyText
-  views: 1
+  camera_model: MyString
+  exposure_time: MyString
+  f_number: MyText
+  iso_speed: MyText
+  flash: MyText
+  flength_35mm_film: MyText
+  latitude: 0.0
+  longitude: 0.0
+  gps_address: MyText
+  views: 0
 
 two:
-  album_id: 
-  file: MyString
-  title: MyString
+  album: one
+  file: File.open(Rails.root.join("test/fixtures/DSC_4952.jpg"))
+  title: PhotoTwo
   date_taken: 2012-02-03 02:14:48
   place_taken: MyString
-  camera: MyString
-  model: MyString
-  other: MyText
-  views: 1
+  camera_model: MyString
+  exposure_time: MyString
+  f_number: MyText
+  iso_speed: MyText
+  flash: MyText
+  flength_35mm_film: MyText
+  latitude: 0.0
+  longitude: 0.0
+  gps_address: MyText
+  views: 0
+  
+three:
+  album: one
+  file: File.open(Rails.root.join("test/fixtures/DSC_9581.jpg"))
+  title: PhotoThree
+  date_taken: 2012-02-03 02:14:48
+  place_taken: MyString
+  camera_model: MyString
+  exposure_time: MyString
+  f_number: MyText
+  iso_speed: MyText
+  flash: MyText
+  flength_35mm_film: MyText
+  latitude: 0.0
+  longitude: 0.0
+  gps_address: MyText
+  views: 0

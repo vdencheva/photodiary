@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  username: MyString
-  password: MyString
+  username: tester1
+  hashed_password: 206c80413b9a96c1312cc346b7d2517b84463edd
   full_name: MyString
-  email: MyString
+  email: tester1@example.com
   description: MyText
 
 two:
-  username: MyString
-  password: MyString
+  username: tester2
+  hashed_password: 206c80413b9a96c1312cc346b7d2517b84463edd
   full_name: MyString
-  email: MyString
+  email: tester2@example.com
   description: MyText

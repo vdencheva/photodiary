@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user: 
-  photo: 
+  user: one
+  photo: one
   body: MyText
 
 two:
-  user: 
-  photo: 
+  user: one
+  photo: two
   body: MyText

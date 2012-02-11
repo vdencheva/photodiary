@@ -53,7 +53,7 @@
           <%= @photo.camera_model %>
         </p>
       <% end %>
-      <% if @photo.date_taken && !@photo.date_taken == '' %>
+      <% if @photo.date_taken && !@photo.date_taken.blank? %>
         <p>
           <b><%= I18n.t('activerecord.attributes.photo.date_taken') %>:</b>
           <%= @photo.date_taken %>

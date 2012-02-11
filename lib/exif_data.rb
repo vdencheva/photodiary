@@ -109,4 +109,8 @@ module ExifData
     obj = Geocoder.search([lat, long])
     obj.first ? obj.first.formatted_address : ''
   end
+  
+  def get_orientation
+    orientation = @exif_data.orientation.to_i
+  end
 end

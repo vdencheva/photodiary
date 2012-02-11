@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   
   attr_accessor :password, :remove_photo
   
+  attr_protected  :hashed_password
+  
   mount_uploader :photo, AvatarUploader
   
   before_save :create_hashed_password, :update_photo

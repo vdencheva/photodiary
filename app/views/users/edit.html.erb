@@ -13,7 +13,7 @@
 <%= form_for(@user, :html => { :multipart => true }) do |f| %>
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username, :disabled => false %>
+    <%= f.text_field :username, :disabled => true %>
   </div>
   <div class="field">
     <%= f.label :full_name %><br />
