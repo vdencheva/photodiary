@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   
   attr_accessor :password, :remove_photo
-    
-  attr_protected :username, :email, :password
   
   mount_uploader :photo, AvatarUploader
   
