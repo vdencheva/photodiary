@@ -33,6 +33,7 @@ class CommentTest < ActiveSupport::TestCase
   
   test "comment owner and photo can be directly assigned" do
     user_two_id = users(:two).id
+    photo_two_id = photos(:two).id
     comment = comments(:one)
     comment.update_attributes(user_id: user_two_id,
                               photo_id: photo_two_id)

@@ -26,28 +26,28 @@ class ApplicationController < ActionController::Base
   def require_login
     unless logged_in?
       flash[:error] = I18n.t('views.mustbeloged_error')
-      redirect_to root_url
+      redirect_to root_path
     end
   end
   
   def require_user_ownership
     unless current_user && current_user.id == @user.id
       flash[:error] = I18n.t('views.mustbeyours_error')
-      redirect_to root_url
+      redirect_to root_path
     end
   end
   
   def require_album_ownership
     unless current_user && current_user.id == @album.user_id
       flash[:error] = I18n.t('views.mustbeyours_error')
-      redirect_to root_url
+      redirect_to root_path
     end
   end
   
   def require_comment_ownership
     unless current_user && current_user.id == @comment.user_id
       flash[:error] = I18n.t('views.mustbeyours_error')
-      redirect_to root_url
+      redirect_to root_path
     end
   end
   

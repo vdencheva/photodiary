@@ -58,7 +58,7 @@
     
     @user.destroy
 
-    redirect_to users_url
+    redirect_to users_path
   end
   
   # GET /login
