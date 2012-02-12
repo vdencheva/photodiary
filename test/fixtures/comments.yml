@@ -6,6 +6,6 @@ one:
   body: MyText
 
 two:
-  user: one
-  photo: two
+  user: two
+  photo: one
   body: MyText

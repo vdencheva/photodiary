@@ -30,24 +30,12 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def require_user_ownership
-    unless current_user && current_user.id == @user.id
+  def is_owner?(owner_id)
+    if current_user && current_user.id == owner_id
+      true
+    else
       flash[:error] = I18n.t('views.mustbeyours_error')
-      redirect_to root_path
-    end
-  end
-  
-  def require_album_ownership
-    unless current_user && current_user.id == @album.user_id
-      flash[:error] = I18n.t('views.mustbeyours_error')
-      redirect_to root_path
-    end
-  end
-  
-  def require_comment_ownership
-    unless current_user && current_user.id == @comment.user_id
-      flash[:error] = I18n.t('views.mustbeyours_error')
-      redirect_to root_path
+      false
     end
   end
   

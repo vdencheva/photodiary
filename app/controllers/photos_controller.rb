@@ -15,50 +15,50 @@ class PhotosController < ApplicationController
 
   # GET /albums/:album_id/photos/new
   def new
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     @photo = @album.photos.build
   end
 
   # GET /albums/:album_id/photos/:id/edit
   def edit
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     @photo = @album.photos.find(params[:id])
   end
 
   # POST /albums/:album_id/photos
   def create
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     @photo = @album.photos.build(params[:photo])
 
     if @photo.save
       flash[:message] = I18n.t('views.photo.created')
-      redirect_to [@album, @photo]
+      redirect_to [@album, @photo] and return
     else
-      render :new
+      render :new and return
     end
   end
 
   # PUT /albums/:album_id/photos/:id
   def update
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     @photo = @album.photos.find(params[:id])
 
     if @photo.update_attributes(params[:photo])
       flash[:message] = I18n.t('views.photo.updated')
-      redirect_to [@album, @photo]
+      redirect_to [@album, @photo] and return
     else
-      render :edit
+      render :edit and return
     end
   end
 
   # DELETE /albums/:album_id/photos/1
   def destroy
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     @photo = @album.photos.find(params[:id])    
     
     @photo.destroy
 
-    redirect_to album_photos_url(@album)
+    redirect_to album_photos_url(@album) and return
   end
   
   private

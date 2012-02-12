@@ -9,55 +9,55 @@ class AlbumsController < ApplicationController
 
   # GET /user/:user_id/albums/:id
   def show
-    redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id]
+    redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id] and return
   end
 
   # GET /user/:user_id/albums/new
   def new
-    require_user_ownership
+    redirect_to root_path and return unless is_owner? @user.id
     @album = @user.albums.build
   end
 
   # GET /user/:user_id/albums/:id/edit
   def edit
     @album = Album.find(params[:id])
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
   end
 
   # POST /user/:user_id/albums
   def create
-    require_user_ownership
+    redirect_to root_path and return unless is_owner? @user.id
     @album = @user.albums.build(params[:album])
 
     if @album.save
       flash[:message] = I18n.t('views.album.created')
-      redirect_to :controller => 'albums', :action => 'index'
+      redirect_to :controller => 'albums', :action => 'index' and return
     else
-      render :new
+      render :new and return
     end
   end
 
   # PUT /user/:user_id/albums/:id
   def update
     @album = Album.find(params[:id])
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     
     if @album.update_attributes(params[:album])
       flash[:message] = I18n.t('views.album.updated')
-      redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id]
+      redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id] and return
     else
-      render :edit
+      render :edit and return
     end
   end
 
   # DELETE /user/:user_id/albums/:id
   def destroy
     @album = Album.find(params[:id])
-    require_album_ownership
+    redirect_to root_path and return unless is_owner? @album.user_id
     
     @album.destroy
 
-    redirect_to user_albums_url(@user)
+    redirect_to user_albums_url(@user) and return
   end
   
   private

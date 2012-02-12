@@ -18,19 +18,19 @@ class CommentsController < ApplicationController
   # GET /albums/:album_id/photos/:photo_id/comments/edit
   def edit
     load_comment_and_photo
-    require_comment_ownership
+    redirect_to root_path and return unless is_owner? @comment.user_id
   end
 
   # PUT /albums/:album_id/photos/:photo_id.comments/:id
   def update
     load_comment_and_photo
-    require_comment_ownership
+    redirect_to root_path and return unless is_owner? @comment.user_id
 
     if @comment.update_attributes params[:comment]
       flash[:message] = I18n.t('views.comment.updated')
-      redirect_to :controller => 'photos', :action => 'show', :album_id => @photo.album_id, :id => @photo.id
+      redirect_to :controller => 'photos', :action => 'show', :album_id => @photo.album_id, :id => @photo.id and return
     else
-      render :edit
+      render :edit and return
     end
   end
   

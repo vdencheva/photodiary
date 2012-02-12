@@ -10,4 +10,18 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login_as(login_user)
+    session[:current_user] = login_user
+    @current_user = login_user
+  end
+  
+  def access_denied_mustlogin
+    assert_redirected_to root_path
+    assert_equal I18n.t('views.mustbeloged_error'), flash[:error]
+  end
+  
+  def access_denied_notallowed
+    assert_redirected_to root_path
+    assert_equal I18n.t('views.mustbeyours_error'), flash[:error]
+  end
 end
