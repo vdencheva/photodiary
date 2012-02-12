@@ -102,9 +102,27 @@ class AlbumsControllerTest < ActionController::TestCase
     access_denied_mustlogin
   end
 
-  test "should destroy album when not loged in" do
+  test "should destroy album when loged in" do
     login_as @user
     assert_difference('Album.count', -1) do
+      delete :destroy, user_id: @user.id, id: @album.to_param
+    end
+    
+    assert_redirected_to user_albums_path(@user)
+  end
+  
+  test "should destroy album and photos in it" do
+    login_as @user
+    assert_difference('Photo.count', -1 * @album.photos.count) do
+      delete :destroy, user_id: @user.id, id: @album.to_param
+    end
+    
+    assert_redirected_to user_albums_path(@user)
+  end
+  
+  test "should destroy album and comments to photos in it" do
+    login_as @user
+    assert_difference('Comment.count', -1 * @album.comments.count) do
       delete :destroy, user_id: @user.id, id: @album.to_param
     end
     

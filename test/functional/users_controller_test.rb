@@ -81,6 +81,22 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to users_path
   end
   
+  test "should destroy user and his albums" do
+    login_as @user
+    assert_difference('Album.count', -1 * @user.albums.count) do
+      delete :destroy, id: @user.to_param
+    end
+    assert_redirected_to users_path
+  end
+  
+  test "should destroy user and his photos" do
+    login_as @user
+    assert_difference('Photo.count', -1 * @user.photos.count) do
+      delete :destroy, id: @user.to_param
+    end
+    assert_redirected_to users_path
+  end
+  
   test "should not destroy user when loged in as another user" do
     login_as users(:two)
     assert_difference('User.count', 0) do

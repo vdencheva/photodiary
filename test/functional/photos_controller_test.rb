@@ -113,6 +113,15 @@ class PhotosControllerTest < ActionController::TestCase
     assert_redirected_to album_photos_path(@album)
   end
   
+  test "should destroy photo and comments to it" do
+    login_as @user
+    assert_difference('Comment.count', -1 * @photo.comments.count) do
+      delete :destroy, album_id: @album.id, id: @photo.to_param
+    end
+
+    assert_redirected_to album_photos_path(@album)
+  end
+  
   test "should not destroy photo when loged in as another user" do
     login_as users(:two)
     assert_difference('Photo.count', 0) do

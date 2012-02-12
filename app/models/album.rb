@@ -1,6 +1,7 @@
 class Album < ActiveRecord::Base
   belongs_to :user
   has_many :photos, :dependent => :destroy
+  has_many :comments, :through => :photos
   
   validates_presence_of :title
   validates_uniqueness_of :title, :scope => :user_id, :if => -> { title.present? }
