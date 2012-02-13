@@ -22,10 +22,10 @@
   </div>
   <div class="photoLinks">
     <% if @photo.previous_photo_id %>
-      <%= link_to I18n.t('views.photo.previous'), album_photo_path(@album, @photo.previous_photo_id), :class => "prevPhoto" %>
+      <%= link_to I18n.t('views.photo.previous'), album_photo_path(@album, @photo.previous_photo_id), class: "prevPhoto" %>
     <% end %>
     <% if @photo.next_photo_id %>
-      <%= link_to I18n.t('views.photo.next'), album_photo_path(@album, @photo.next_photo_id), :class => "nextPhoto" %>
+      <%= link_to I18n.t('views.photo.next'), album_photo_path(@album, @photo.next_photo_id), class: "nextPhoto" %>
     <% end %>
   </div>
   <div class="clear"></div>
@@ -36,9 +36,9 @@
       <p>
         <b><%= I18n.t('views.photo.author') %>:</b>
         <% if @user.has_photo? %>
-          <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+          <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
         <% else %>
-          <%= link_to @user.username, user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+          <%= link_to @user.username, user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
         <% end %>
       </p>
       <% if @photo.place_taken && !@photo.place_taken.empty? %>

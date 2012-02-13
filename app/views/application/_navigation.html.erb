@@ -1,7 +1,7 @@
   <div class="topHolder">
     <div class="topNavigation">
       <ul class="nav">
-        <li><%= link_to "", root_path, :title => I18n.t('views.home'), :class => "topLogo" %></li>
+        <li><%= link_to "", root_path, title: I18n.t('views.home'), class: "topLogo" %></li>
         <li><%= link_to I18n.t('views.user.list'), users_path %></li>
         <% if logged_in? %>
           <li><%= link_to I18n.t('views.user.profile'), session[:current_user] %></li>

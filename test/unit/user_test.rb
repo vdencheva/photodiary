@@ -72,8 +72,8 @@ class UserTest < ActiveSupport::TestCase
   
   test "hashed password can be directly assigned" do
     user = users(:one)
-    user.update_attributes(:username => 'tester12',
-                           :hashed_password => 'abv123')
+    user.update_attributes(username: 'tester12',
+                           hashed_password: 'abv123')
     assert_equal 'tester12', user.username
     assert_not_equal 'abv123', user.hashed_password
     

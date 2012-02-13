@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :require_login, :only => [:create, :edit, :update]
+  before_filter :require_login, only: [:create, :edit, :update]
   
   # POST /albums/:album_id/photo/:photo_id/comments
   def create
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:message] = I18n.t('views.comment.created')
-      redirect_to :controller => 'photos', :action => 'show', :album_id => @photo.album_id, :id => @photo.id
+      redirect_to controller: 'photos', action: 'show', album_id: @photo.album_id, id: @photo.id
     else
       render :new
     end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
     if @comment.update_attributes params[:comment]
       flash[:message] = I18n.t('views.comment.updated')
-      redirect_to :controller => 'photos', :action => 'show', :album_id => @photo.album_id, :id => @photo.id and return
+      redirect_to controller: 'photos', action: 'show', album_id: @photo.album_id, id: @photo.id and return
     else
       render :edit and return
     end

@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_filter :load_album_owner
-  before_filter :require_login, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_login, only: [:new, :create, :edit, :update, :destroy]
   
   # GET /user/:user_id/albums
   def index
@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
 
   # GET /user/:user_id/albums/:id
   def show
-    redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id] and return
+    redirect_to controller: 'photos', action: 'index', album_id: params[:id] and return
   end
 
   # GET /user/:user_id/albums/new
@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
 
     if @album.save
       flash[:message] = I18n.t('views.album.created')
-      redirect_to :controller => 'albums', :action => 'index' and return
+      redirect_to controller: 'albums', action: 'index' and return
     else
       render :new and return
     end
@@ -44,7 +44,7 @@ class AlbumsController < ApplicationController
     
     if @album.update_attributes(params[:album])
       flash[:message] = I18n.t('views.album.updated')
-      redirect_to :controller => 'photos', :action => 'index', :album_id => params[:id] and return
+      redirect_to controller: 'photos', action: 'index', album_id: params[:id] and return
     else
       render :edit and return
     end

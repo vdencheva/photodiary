@@ -1,9 +1,9 @@
 ﻿require 'digest/sha1'
 
 class User < ActiveRecord::Base  
-  has_many :albums, :dependent => :destroy
-  has_many :photos, :through => :albums
-  has_many :comments, :dependent => :destroy
+  has_many :albums, dependent: :destroy
+  has_many :photos, through: :albums
+  has_many :comments, dependent: :destroy
   
   attr_accessor :password, :remove_photo
   
@@ -14,13 +14,13 @@ class User < ActiveRecord::Base
   before_save :create_hashed_password, :update_photo
   
   validates_presence_of :username
-  validates_uniqueness_of :username, :if => -> { username.present? }
-  validates_presence_of :password, :on => :create
-  validates_length_of :password, :minimum => 6, :if => -> { password.present? }
-  validates_confirmation_of :password, :if => -> { password.present? }
+  validates_uniqueness_of :username, if: -> { username.present? }
+  validates_presence_of :password, on: :create
+  validates_length_of :password, minimum: 6, if: -> { password.present? }
+  validates_confirmation_of :password, if: -> { password.present? }
   validates_presence_of :email
-  validates_uniqueness_of :email, :if => -> { email.present? }
-  validates_format_of :email, :with => /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, :if => -> { email.present? }
+  validates_uniqueness_of :email, if: -> { email.present? }
+  validates_format_of :email, with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, if: -> { email.present? }
   
   def self.authenticate(username, password)
     user = User.find_by_username(username)

@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_filter :load_album, :load_album_owner
-  before_filter :require_login, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_login, only: [:new, :create, :edit, :update, :destroy]
     
   # GET /albums/:album_id/photos
   def index

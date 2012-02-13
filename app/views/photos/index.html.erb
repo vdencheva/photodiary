@@ -5,9 +5,9 @@
   <h1>
     <%= page_title %>
     <% if @user.has_photo? %>
-      <%= link_to image_tag(@user.small_avatar, :border=>0), user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+      <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
     <% else %>
-      <%= link_to @user.username, user_albums_path(@user), :title => I18n.t('views.album.list')+@user.username %>
+      <%= link_to @user.username, user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
     <% end %>
   </h1>
   <div class="albumLinks">
@@ -28,7 +28,7 @@
   <% if @photos.size > 0 %>
     <% @photos.each_with_index do |photo, i| %>
       <div class="objHolder bm <%= 'rm' if i % 5 != 4 %>">
-        <%= link_to image_tag(photo.file.thumb.url, :border=>0), album_photo_path(@album, photo), :title => photo.title, :class => "photoLink" %>
+        <%= link_to image_tag(photo.file.thumb.url, border: 0), album_photo_path(@album, photo), title: photo.title, class: "photoLink" %>
       </div>
     <% end %>
   <% else %>

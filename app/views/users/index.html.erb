@@ -9,7 +9,7 @@
 <div class="usersHolder">
   <% @users.each_with_index do |user, i| %>
     <div class="usrHolder bm rm">
-      <%= link_to image_tag(user.avatar, :border=>0), user_path(user), :title => user.username, :class => "userLink" %>
+      <%= link_to image_tag(user.avatar, border: 0), user_path(user), title: user.username, class: "userLink" %>
     </div>
   <% end %>
   <div class="clear"></div>
