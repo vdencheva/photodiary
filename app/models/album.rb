@@ -14,6 +14,6 @@ class Album < ActiveRecord::Base
   end
   
   def photos_count
-    photos.count
+    photos.size
   end
 end

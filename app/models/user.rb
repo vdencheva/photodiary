@@ -50,11 +50,11 @@ class User < ActiveRecord::Base
   end
   
   def albums_count
-    albums.count
+    albums.size
   end
   
   def photos_count
-    photos.count
+    photos.size
   end
   
   private
