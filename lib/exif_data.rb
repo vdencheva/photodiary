@@ -1,30 +1,6 @@
 require 'exifr'
 
 module ExifData
-  FLASH_CODES = { '0' => 'Flash did not fire',
-                  '1' => 'Flash fired',
-                  '5' => 'Strobe return light not detected',
-                  '7' => 'Strobe return light detected',
-                  '9' => 'Flash fired, compulsory flash mode',
-                  'D' => 'Flash fired, compulsory flash mode, return light not detected',
-                  'F' => 'Flash fired, compulsory flash mode, return light detected',
-                  '10' => 'Flash did not fire, compulsory flash mode',
-                  '18' => 'Flash did not fire, auto mode',
-                  '19' => 'Flash fired, auto mode',
-                  '1D' => 'Flash fired, auto mode, return light not detected',
-                  '1F' => 'Flash fired, auto mode, return light detected',
-                  '20' => 'No flash function',
-                  '41' => 'Flash fired, red-eye reduction mode',
-                  '45' => 'Flash fired, red-eye reduction mode, return light not detected',
-                  '47' => 'Flash fired, red-eye reduction mode, return light detected',
-                  '49' => 'Flash fired, compulsory flash mode, red-eye reduction mode',
-                  '4D' => 'Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected',
-                  '4F' => 'Flash fired, compulsory flash mode, red-eye reduction mode, return light detected',
-                  '59' => 'Flash fired, auto mode, red-eye reduction mode',
-                  '5D' => 'Flash fired, auto mode, return light not detected, red-eye reduction mode',
-                  '5F' => 'Flash fired, auto mode, return light detected, red-eye reduction mode',
-                }
-  
   def extract_exif_data(file_path)
     case file_path.downcase
     when /\.jpg\Z/
@@ -72,7 +48,7 @@ module ExifData
   def get_flash
     if @exif_data.flash
       hex_code = @exif_data.flash.to_s(16).upcase
-      FLASH_CODES[hex_code] ? FLASH_CODES[hex_code] : ''
+      flash_text = I18n.t("exif_data.code_#{hex_code}")
     else
       ''
     end

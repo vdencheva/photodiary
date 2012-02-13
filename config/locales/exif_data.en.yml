@@ -1,0 +1,30 @@
+﻿bg:
+  exif_data:
+    code_0: 'Flash did not fire'
+    code_1: 'Flash fired'
+    code_5: 'Strobe return light not detected'
+    code_7: 'Strobe return light detected'
+    code_9: 'Flash fired, compulsory flash mode'
+    code_D: 'Flash fired, compulsory flash mode, return light not detected'
+    code_F: 'Flash fired, compulsory flash mode, return light detected'
+    code_10: 'Flash did not fire, compulsory flash mode'
+    code_18: 'Flash did not fire, auto mode'
+    code_19: 'Flash fired, auto mode'
+    code_1D: 'Flash fired, auto mode, return light not detected'
+    code_1F: 'Flash fired, auto mode, return light detected'
+    code_20: 'No flash function'
+    code_41: 'Flash fired, red-eye reduction mode'
+    code_45: 'Flash fired, red-eye reduction mode, return light not detected'
+    code_47: 'Flash fired, red-eye reduction mode, return light detected'
+    code_49: 'Flash fired, compulsory flash mode, red-eye reduction mode'
+    code_4D: 'Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected'
+    code_4F: 'Flash fired, compulsory flash mode, red-eye reduction mode, return light detected'
+    code_59: 'Flash fired, auto mode, red-eye reduction mode'
+    code_5D: 'Flash fired, auto mode, return light not detected, red-eye reduction mode'
+    code_5F: 'Flash fired, auto mode, return light detected, red-eye reduction mode'
+      
+      
+      
+      
+      
+ 
