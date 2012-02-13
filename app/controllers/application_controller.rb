@@ -40,10 +40,10 @@ class ApplicationController < ActionController::Base
   end
   
   def has_album_rights?
-    (current_user && @album.user_id == current_user.id) ? true : false
+    current_user && @album.user_id == current_user.id
   end
   
   def has_user_riths?
-    (current_user && @user.id == current_user.id) ? true : false
+    current_user && @user.id == current_user.id
   end
 end
