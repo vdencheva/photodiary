@@ -15,13 +15,13 @@ class CommentsController < ApplicationController
     end
   end
   
-  # GET /albums/:album_id/photos/:photo_id/comments/edit
+  # GET /albums/:album_id/photos/:photo_id/comments/:id/edit
   def edit
     load_comment_and_photo
     redirect_to root_path and return unless is_owner? @comment.user_id
   end
 
-  # PUT /albums/:album_id/photos/:photo_id.comments/:id
+  # PUT /albums/:album_id/photos/:photo_id/comments/:id
   def update
     load_comment_and_photo
     redirect_to root_path and return unless is_owner? @comment.user_id
