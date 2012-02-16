@@ -43,7 +43,7 @@ class PhotoTest < ActiveSupport::TestCase
     assert_equal 'f/10', photo.f_number
     assert_equal 'ISO-200', photo.iso_speed
     assert_equal '82 mm', photo.flength_35mm_film
-    assert_equal 'Flash did not fire', photo.flash
+    assert_equal I18n.t("exif_data.code_0"), photo.flash
   end
   
   test "should increment photo views" do
@@ -54,8 +54,9 @@ class PhotoTest < ActiveSupport::TestCase
   end
   
   test "get previous and next photo in the album" do
+    album = albums(:one)
     photo = photos(:two)
-    assert_equal Photo.find('album_id = ? AND id < ', photo.album_id, photo.id).order('id DESC').first.id, photo.previous_photo_id
-    assert_equal Photo.find('album_id = ? AND id > ', photo.album_id, photo.id).order('id ASC').first.id, photo.next_photo_id
+    assert_equal album.photos.find('id < ?', photo.id).order('id DESC').first.id, photo.previous_photo_id
+    assert_equal album.photos.find('id > ?', photo.id).order('id ASC').first.id, photo.next_photo_id
   end
 end

@@ -82,20 +82,20 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   test "Login and edit comment" do
     login
         
-    @album_id = albums(:one).id
-    @photo_id = photos(:one).id
-    @comment_id = comments(:one).id
+    album_id = albums(:one).id
+    photo_id = photos(:one).id
+    comment_id = comments(:one).id
     
-    get "/albums/#{@album_id}/photos/#{@photo_id}"
+    get "/albums/#{album_id}/photos/#{photo_id}"
     assert_response :success
     assert assigns(:photo)
     
-    get "/albums/#{@album_id}/photos/#{@photo_id}/comments/#{@comment_id}/edit"
+    get "/albums/#{album_id}/photos/#{photo_id}/comments/#{comment_id}/edit"
     assert_response :success
     assert assigns(:comment)
     
-    put_via_redirect "/albums/#{@album_id}/photos/#{@photo_id}/comments/#{@comment_id}", comment: { body: "other test comment" }
-    assert_equal "/albums/#{@album_id}/photos/#{@photo_id}", path
+    put_via_redirect "/albums/#{album_id}/photos/#{photo_id}/comments/#{comment_id}", comment: { body: "other test comment" }
+    assert_equal "/albums/#{album_id}/photos/#{photo_id}", path
     assert_equal I18n.t('views.comment.updated'), flash[:message]
     assert_response :success
     assert assigns(:photo)
