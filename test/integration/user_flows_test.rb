@@ -94,7 +94,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert assigns(:comment)
     
-    post_via_redirect "/albums/#{@album_id}/photos/#{@photo_id}/comments/#{@comment_id}", comment: { body: "other test comment" }
+    put_via_redirect "/albums/#{@album_id}/photos/#{@photo_id}/comments/#{@comment_id}", comment: { body: "other test comment" }
     assert_equal "/albums/#{@album_id}/photos/#{@photo_id}", path
     assert_equal I18n.t('views.comment.updated'), flash[:message]
     assert_response :success
