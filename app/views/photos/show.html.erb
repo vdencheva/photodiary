@@ -9,8 +9,8 @@
   <h1><%= link_to @album.title, album_photos_path(@album) %></h1>
   <% if has_album_rights? %>
     <div class="albumLinks">
-      <%= link_to I18n.t('views.edit'), edit_album_photo_path(@album, @photo) %> |
-      <%= link_to I18n.t('views.delete'), album_photo_path(@album, @photo), confirm: I18n.t('views.photo.delete_msg'), method: :delete %> |
+      <%= link_to t('edit'), edit_album_photo_path(@album, @photo) %> |
+      <%= link_to t('delete'), album_photo_path(@album, @photo), confirm: t('photos.edit.delete_msg'), method: :delete %> |
     </div>
   <% end %>
 </div>
@@ -22,10 +22,10 @@
   </div>
   <div class="photoLinks">
     <% if @photo.previous_photo_id %>
-      <%= link_to I18n.t('views.photo.previous'), album_photo_path(@album, @photo.previous_photo_id), class: "prevPhoto" %>
+      <%= link_to t('.previous'), album_photo_path(@album, @photo.previous_photo_id), class: "prevPhoto" %>
     <% end %>
     <% if @photo.next_photo_id %>
-      <%= link_to I18n.t('views.photo.next'), album_photo_path(@album, @photo.next_photo_id), class: "nextPhoto" %>
+      <%= link_to t('.next'), album_photo_path(@album, @photo.next_photo_id), class: "nextPhoto" %>
     <% end %>
   </div>
   <div class="clear"></div>
@@ -34,81 +34,81 @@
         <h2>"<%= @photo.title %>"</h2>
       <% end %>
       <p>
-        <b><%= I18n.t('views.photo.author') %>:</b>
+        <b><%= t('.author') %>:</b>
         <% if @user.has_photo? %>
-          <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
+          <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
         <% else %>
-          <%= link_to @user.username, user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
+          <%= link_to @user.username, user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
         <% end %>
       </p>
       <% if @photo.place_taken && !@photo.place_taken.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.place_taken') %>:</b>
+          <b><%= Photo.human_attribute_name('place_taken') %>:</b>
           <%= @photo.place_taken %>
         </p>
       <% end %>
       <% if @photo.camera_model && !@photo.camera_model.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.camera_model') %>:</b>
+          <b><%= Photo.human_attribute_name('camera_model') %>:</b>
           <%= @photo.camera_model %>
         </p>
       <% end %>
       <% if @photo.date_taken && !@photo.date_taken.blank? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.date_taken') %>:</b>
+          <b><%= Photo.human_attribute_name('date_taken') %>:</b>
           <%= @photo.date_taken %>
         </p>
       <% end %>
       <% if @photo.exposure_time && !@photo.exposure_time.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.exposure_time') %>:</b>
+          <b><%= Photo.human_attribute_name('exposure_time') %>:</b>
           <%= @photo.exposure_time %>
         </p>
       <% end %>
       <% if @photo.f_number && !@photo.f_number.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.f_number') %>:</b>
+          <b><%= Photo.human_attribute_name('f_number') %>:</b>
           <%= @photo.f_number %>
         </p>
       <% end %>
       <% if @photo.iso_speed && !@photo.iso_speed.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.iso_speed') %>:</b>
+          <b><%= Photo.human_attribute_name('iso_speed') %>:</b>
           <%= @photo.iso_speed %>
         </p>
       <% end %>
       <% if @photo.flash && !@photo.flash.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.flash') %>:</b>
+          <b><%= Photo.human_attribute_name('flash') %>:</b>
           <%= @photo.flash %>
         </p>
       <% end %>
       <% if @photo.flength_35mm_film && !@photo.flength_35mm_film.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.flength_35mm_film') %>:</b>
+          <b><%= Photo.human_attribute_name('flength_35mm_film') %>:</b>
           <%= @photo.flength_35mm_film %>
         </p>
       <% end %>
       <% if @photo.latitude && !@photo.latitude.nil? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.latitude') %>:</b>
+          <b><%= Photo.human_attribute_name('latitude') %>:</b>
           <%= @photo.latitude %>
         </p>
       <% end %>
       <% if @photo.longitude && !@photo.longitude.nil? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.longitude') %>:</b>
+          <b><%= Photo.human_attribute_name('longitude') %>:</b>
           <%= @photo.longitude %>
         </p>
       <% end %>
       <% if @photo.gps_address && !@photo.gps_address.empty? %>
         <p>
-          <b><%= I18n.t('activerecord.attributes.photo.gps_address') %>:</b>
+          <b><%= Photo.human_attribute_name('gps_address') %>:</b>
           <%= @photo.gps_address %>
         </p>
       <% end %>
       <p>
-        <b><%= I18n.t('views.photo.viewed') %><%= @photo.views.to_s %><%= @photo.views == 1 ? I18n.t('views.photo.time') : I18n.t('views.photo.times') %></b>
+        <b><%= t('.viewed_x_times', count: @photo.views) %></b>
       </p>
     </div>
     <div class="clear"></div>

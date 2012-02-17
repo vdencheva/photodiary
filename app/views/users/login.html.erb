@@ -1,4 +1,4 @@
-<% page_title = I18n.t('views.user.login') %>
+<% page_title = t('login') %>
 <% content_for :page_title, page_title %>
 
 <div class="albumTitle">
@@ -16,6 +16,6 @@
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit I18n.t('helpers.submit.login') %>
+    <%= f.submit t('helpers.submit.login') %>
   </div>
 <% end %>

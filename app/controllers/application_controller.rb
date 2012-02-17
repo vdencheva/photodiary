@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   
   def require_login
     unless logged_in?
-      flash[:error] = I18n.t('views.mustbeloged_error')
+      flash[:error] = t('mustbeloged_error')
       redirect_to root_path
     end
   end
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.id == owner_id
       true
     else
-      flash[:error] = I18n.t('views.mustbeyours_error')
+      flash[:error] = t('mustbeyours_error')
       false
     end
   end

@@ -17,11 +17,11 @@ class ActiveSupport::TestCase
   
   def access_denied_mustlogin
     assert_redirected_to root_path
-    assert_equal I18n.t('views.mustbeloged_error'), flash[:error]
+    assert_equal I18n.t('mustbeloged_error'), flash[:error]
   end
   
   def access_denied_notallowed
     assert_redirected_to root_path
-    assert_equal I18n.t('views.mustbeyours_error'), flash[:error]
+    assert_equal I18n.t('mustbeyours_error'), flash[:error]
   end
 end

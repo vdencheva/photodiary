@@ -11,7 +11,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     
     post_via_redirect "/users/#{session["current_user"]["id"]}/albums", album: { title: "test album", description: "" }
     assert_equal "/users/#{session["current_user"]["id"]}/albums", path
-    assert_equal I18n.t('views.album.created'), flash[:message]
+    assert_equal I18n.t('albums.new.created'), flash[:message]
     assert_response :success
     assert assigns(:albums)
     
@@ -41,7 +41,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     
     post_via_redirect "/albums/#{albums(:one).id}/photos", photo: { file: fixture_file_upload('DSC_5729.jpg', 'image/jpeg', :binary) }
     assert_equal "/albums/#{albums(:one).id}/photos/#{assigns(:photo).id}", path
-    assert_equal I18n.t('views.photo.created'), flash[:message]
+    assert_equal I18n.t('photos.new.created'), flash[:message]
     assert_response :success
     assert assigns(:photo)
     
@@ -72,7 +72,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     
     post_via_redirect "/albums/#{albums(:one).id}/photos/#{photos(:one).id}/comments", comment: { body: "test comment" }
     assert_equal "/albums/#{albums(:one).id}/photos/#{photos(:one).id}", path
-    assert_equal I18n.t('views.comment.created'), flash[:message]
+    assert_equal I18n.t('comments.new.created'), flash[:message]
     assert_response :success
     assert assigns(:photo)
     
@@ -96,7 +96,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     
     put_via_redirect "/albums/#{album_id}/photos/#{photo_id}/comments/#{comment_id}", comment: { body: "other test comment" }
     assert_equal "/albums/#{album_id}/photos/#{photo_id}", path
-    assert_equal I18n.t('views.comment.updated'), flash[:message]
+    assert_equal I18n.t('comments.edit.updated'), flash[:message]
     assert_response :success
     assert assigns(:photo)
     
@@ -109,12 +109,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
  
     post_via_redirect "/login", user: {  username: "tester1", password: "testpass" }
     assert_equal '/', path
-    assert_equal I18n.t('views.user.login_succeeded'), flash[:message]
+    assert_equal I18n.t('users.login.succeeded'), flash[:message]
   end
   
   def logout
     delete_via_redirect "/logout"
     assert_equal '/', path
-    assert_equal I18n.t('views.user.logout_succeeded'), flash[:message]
+    assert_equal I18n.t('user.logout.succeeded'), flash[:message]
   end
 end

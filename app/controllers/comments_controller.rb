@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      flash[:message] = I18n.t('views.comment.created')
+      flash[:message] = t('comments.new.created')
       redirect_to controller: 'photos', action: 'show', album_id: @photo.album_id, id: @photo.id
     else
       render :new
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     redirect_to root_path and return unless is_owner? @comment.user_id
 
     if @comment.update_attributes params[:comment]
-      flash[:message] = I18n.t('views.comment.updated')
+      flash[:message] = t('comments.edit.updated')
       redirect_to controller: 'photos', action: 'show', album_id: @photo.album_id, id: @photo.id and return
     else
       render :edit and return

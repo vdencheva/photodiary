@@ -27,7 +27,7 @@
     @user = User.new(params[:user])
 
     if @user.save
-      flash[:message] = I18n.t('views.user.created')
+      flash[:message] = t('users.new.created')
       redirect_to @user and return
     else
        render :new and return
@@ -44,7 +44,7 @@
     end
 
     if @user.update_attributes(params[:user])
-      flash[:message] = I18n.t('views.user.updated')
+      flash[:message] = t('users.edit.updated')
       redirect_to @user and return
     else
       render :edit and return
@@ -70,10 +70,10 @@
   def login_process
     session[:current_user] = User.authenticate(params[:user][:username], params[:user][:password])
     if session[:current_user]
-      flash[:message] = I18n.t('views.user.login_succeeded')
+      flash[:message] = t('users.login.succeeded')
       redirect_to root_path and return
     else
-      flash.now[:error] = I18n.t('views.user.login_error')
+      flash.now[:error] = t('users.login.error')
       @user = User.new
       render :login and return
     end
@@ -82,7 +82,7 @@
   # DELETE /logout
   def logout
     reset_session
-    flash[:message] = I18n.t('views.user.logout_succeeded')
+    flash[:message] = t('users.logout.succeeded')
     redirect_to root_path and return
   end
 end

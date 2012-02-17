@@ -1,7 +1,7 @@
 <% if has_user_riths? %>
-  <% page_title = I18n.t('views.user.profile') %>
+  <% page_title = t('.profile') %>
 <% else %>
-  <% page_title = I18n.t('views.user.preview_user')+' '+@user.username %>
+  <% page_title = t('.preview_user', user: @user.username) %>
 <% end %>
 <% content_for :page_title, page_title %>
 
@@ -9,8 +9,8 @@
   <h1><%= page_title %></h1>
   <% if has_user_riths? %>
     <div class="albumLinks">
-      <%= link_to I18n.t('views.edit'), edit_user_path(current_user) %> |
-      <%= link_to I18n.t('views.delete'), user_path(current_user), confirm: I18n.t('views.user.delete_msg'), method: :delete %> |
+      <%= link_to t('edit'), edit_user_path(current_user) %> |
+      <%= link_to t('delete'), user_path(current_user), confirm: t('users.edit.delete_msg'), method: :delete %> |
     </div>
   <% end %>
 </div>
@@ -20,23 +20,23 @@
   <%= image_tag(@user.photo.preview.url) %><br />
 <% end %>
 <p>
-  <b><%= I18n.t('activerecord.attributes.user.full_name') %>:</b>
+  <b><%= User.human_attribute_name('full_name') %>:</b>
   <%= @user.full_name %>
 </p>
 
 <p>
-  <b><%= I18n.t('activerecord.attributes.user.email') %>:</b>
+  <b><%= User.human_attribute_name('email') %>:</b>
   <%= @user.email %>
 </p>
 
 <p>
-  <b><%= I18n.t('activerecord.attributes.user.description') %>:</b>
+  <b><%= User.human_attribute_name('description') %>:</b>
   <%= @user.description %>
 </p>
 
 <p>
   <% photos_cnt = @user.photos_count %>
   <% albums_cnt = @user.albums_count %>
-  <b><%= link_to I18n.t('views.user.total')+' '+photos_cnt.to_s+' '+(photos_cnt == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos'))+' '+I18n.t('views.user.in')+' '+albums_cnt.to_s+' '+(albums_cnt == 1 ? I18n.t('views.user.album') : I18n.t('views.user.albums')), user_albums_path(@user) %></b>
+  <b><%= link_to t('.total_photo', count: photos_cnt)+' '+t('.in_album', count: albums_cnt), user_albums_path(@user) %></b>
 </p>
 

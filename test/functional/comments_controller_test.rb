@@ -20,7 +20,7 @@ class CommentsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to album_photo_path(@album, @photo)
-    assert_equal I18n.t('views.comment.created'), flash[:message]
+    assert_equal I18n.t('comments.new.created'), flash[:message]
   end
   
   test "should not create comment when not loged in" do
@@ -53,7 +53,7 @@ class CommentsControllerTest < ActionController::TestCase
     login_as @user
     put :update, album_id: @album.id, photo_id: @photo.id, id: @comment.to_param, comment: @comment.attributes
     assert_redirected_to album_photo_path(@album, @photo)
-    assert_equal I18n.t('views.comment.updated'), flash[:message]
+    assert_equal I18n.t('comments.edit.updated'), flash[:message]
   end
   
   test "should not update comment when loged in as another user" do

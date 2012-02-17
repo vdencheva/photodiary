@@ -27,7 +27,7 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to user_path(assigns(:user))
-    assert_equal I18n.t('views.user.created'), flash[:message]
+    assert_equal I18n.t('users.new.created'), flash[:message]
   end
 
   test "should show user" do
@@ -59,7 +59,7 @@ class UsersControllerTest < ActionController::TestCase
     put :update, id: @user.to_param, user: @user.attributes
     assert_not_nil assigns(:user)
     assert_redirected_to user_path(assigns(:user))
-    assert_equal I18n.t('views.user.updated'), flash[:message]
+    assert_equal I18n.t('users.edit.updated'), flash[:message]
   end
   
   test "should not update user when loged in as another user" do
@@ -121,13 +121,13 @@ class UsersControllerTest < ActionController::TestCase
     post :login_process, user: { username: "tester1", password: "testpass" }
     assert_equal users(:one).id, session[:current_user][:id]
     assert_redirected_to root_path
-    assert_equal I18n.t('views.user.login_succeeded'), flash[:message]
+    assert_equal I18n.t('users.login.succeeded'), flash[:message]
   end
   
   test "should not log in" do
     post :login_process, user: { username: "tester1", password: "testpas" }
     assert_nil session[:current_user]
-    assert_equal I18n.t('views.user.login_error'), flash[:error]
+    assert_equal I18n.t('users.login.error'), flash[:error]
   end
  
   test "should logout" do
@@ -135,7 +135,7 @@ class UsersControllerTest < ActionController::TestCase
     get :logout 
     assert_nil session[:current_user]
     assert_redirected_to root_path
-    assert_equal I18n.t('views.user.logout_succeeded'), flash[:message]
+    assert_equal I18n.t('users.logout.succeeded'), flash[:message]
   end
   
   test "should not logout when not loged in" do

@@ -1,4 +1,4 @@
-<% page_title = I18n.t('views.user.registration') %>
+<% page_title = t('.registration') %>
 <% content_for :page_title, page_title %>
 
 <div class="albumTitle">
@@ -24,6 +24,6 @@
     <%= f.text_field :email %>
   </div>
   <div class="actions">
-    <%= f.submit I18n.t('views.user.registration') %>
+    <%= f.submit t('.registration') %>
   </div>
 <% end %>

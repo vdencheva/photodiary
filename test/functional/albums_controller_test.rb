@@ -41,7 +41,7 @@ class AlbumsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to user_albums_path(@user)
-    assert_equal I18n.t('views.album.created'), flash[:message]
+    assert_equal I18n.t('albums.new.created'), flash[:message]
   end
   
   test "should not create album when loged in as another user" do
@@ -88,7 +88,7 @@ class AlbumsControllerTest < ActionController::TestCase
     login_as @user
     put :update, user_id: @user.id, id: @album.to_param, album: @album.attributes
     assert_redirected_to album_photos_path(assigns(:album))
-    assert_equal I18n.t('views.album.updated'), flash[:message]
+    assert_equal I18n.t('albums.edit.updated'), flash[:message]
   end
   
   test "should not update album when loged in as another user" do

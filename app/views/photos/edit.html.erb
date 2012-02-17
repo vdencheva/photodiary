@@ -1,11 +1,11 @@
-<% page_title = I18n.t('views.edit') %>
+<% page_title = t('edit') %>
 <% content_for :page_title, page_title %>
 
 <div class="albumTitle">
   <h1><%= page_title %></h1>
   <div class="albumLinks">
-    <%= link_to I18n.t('views.photo.preview_photo'), album_photo_path(@album, @photo) %> |
-    <%= link_to I18n.t('views.delete'), album_photo_path(@album, @photo), confirm: I18n.t('views.photo.delete_msg'), method: :delete %> |
+    <%= link_to t('.preview_photo'), album_photo_path(@album, @photo) %> |
+    <%= link_to t('delete'), album_photo_path(@album, @photo), confirm: t('.delete_msg'), method: :delete %> |
   </div>
 </div>
 <%= render 'messages' %>

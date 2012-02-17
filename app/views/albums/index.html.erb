@@ -1,7 +1,7 @@
 <% if has_user_riths? %>
-  <% page_title = I18n.t('views.album.my_albums') %>
+  <% page_title = t('.my_albums') %>
 <% else %>
-  <% page_title = I18n.t('views.album.list')+@user.username %>
+  <% page_title = t('.albums_of', user: @user.username) %>
 <% end %>
 <% content_for :page_title, page_title %>
 
@@ -9,15 +9,15 @@
   <h1><%= page_title %>
     <% if !has_user_riths? %>
       <% if @user.has_photo? %>
-        <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
+        <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: t('.albums_of', user: @user.username) %>
       <% else %>
-        <%= link_to @user.username, user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
+        <%= link_to @user.username, user_albums_path(@user), title: t('.albums_of', user: @user.username) %>
       <% end %>
     <% end %>
   </h1>
   <% if has_user_riths? %>
     <div class="albumLinks">
-      <%= link_to I18n.t('views.album.create_new'), new_user_album_path(@user) %> |
+      <%= link_to t('.create_new'), new_user_album_path(@user) %> |
     </div>
   <% end %>
 </div>
@@ -31,7 +31,7 @@
       </div>
     <% end %>
   <% else %>
-    <p><%= I18n.t('views.album.no_albums') %></p>
+    <p><%= t('.no_albums') %></p>
   <% end %>
   <div class="clear"></div>
 </div>

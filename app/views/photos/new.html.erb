@@ -1,20 +1,20 @@
-<% page_title = I18n.t('views.photo.add_photo')+I18n.t('views.photo.to')+'"'+@album.title+'"' %>
+<% page_title = t('.add_photo_to_album', album: @album.title) %>
 <% content_for :page_title, page_title %>
 
 <div class="albumTitle">
   <h1><%= page_title %></h1>
   <div class="albumLinks">
-    <%= link_to I18n.t('views.photo.back_to_album'), album_photos_path(@album) %>
+    <%= link_to t('.back_to_album'), album_photos_path(@album) %>
   </div>
 </div>
 <%= render 'messages' %>
 
 <%= form_for([@album, @photo]) do |f| %>
   <div class="field">
-    <%= f.label :file, I18n.t('views.photo.choose_photo') %>
+    <%= f.label :file, t('.choose_photo') %>
     <%= f.file_field :file %>
   </div>
   <div class="actions">
-    <%= f.submit I18n.t('views.photo.upload') %>
+    <%= f.submit t('.upload') %>
   </div>
 <% end %>

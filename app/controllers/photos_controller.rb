@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
     @photo = @album.photos.build(params[:photo])
 
     if @photo.save
-      flash[:message] = I18n.t('views.photo.created')
+      flash[:message] = t('photos.new.created')
       redirect_to [@album, @photo] and return
     else
       render :new and return
@@ -44,7 +44,7 @@ class PhotosController < ApplicationController
     @photo = @album.photos.find(params[:id])
 
     if @photo.update_attributes(params[:photo])
-      flash[:message] = I18n.t('views.photo.updated')
+      flash[:message] = t('photos.edit.updated')
       redirect_to [@album, @photo] and return
     else
       render :edit and return

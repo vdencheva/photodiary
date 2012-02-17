@@ -30,7 +30,7 @@ class AlbumsController < ApplicationController
     @album = @user.albums.build(params[:album])
 
     if @album.save
-      flash[:message] = I18n.t('views.album.created')
+      flash[:message] = t('albums.new.created')
       redirect_to controller: 'albums', action: 'index' and return
     else
       render :new and return
@@ -43,7 +43,7 @@ class AlbumsController < ApplicationController
     redirect_to root_path and return unless is_owner? @album.user_id
     
     if @album.update_attributes(params[:album])
-      flash[:message] = I18n.t('views.album.updated')
+      flash[:message] = t('albums.edit.updated')
       redirect_to controller: 'photos', action: 'index', album_id: params[:id] and return
     else
       render :edit and return

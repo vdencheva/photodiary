@@ -1,23 +1,23 @@
-<% page_title = '"'+@album.title+'"'+' '+I18n.t('views.photo.belongs_to')+' '+@user.username %>
+<% page_title = t('.album_belongs_to_user', album: @album.title, user: @user.username) %>
 <% content_for :page_title, page_title %>
 
 <div class="albumTitle">
   <h1>
     <%= page_title %>
     <% if @user.has_photo? %>
-      <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
+      <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
     <% else %>
-      <%= link_to @user.username, user_albums_path(@user), title: I18n.t('views.album.list')+@user.username %>
+      <%= link_to @user.username, user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
     <% end %>
   </h1>
   <div class="albumLinks">
     <% if has_album_rights? %> 
-      <%= link_to I18n.t('views.photo.add_photo'), new_album_photo_path(@album) %> |
-      <%= link_to I18n.t('views.edit'), edit_user_album_path(@user, @album) %> |
-      <%= link_to I18n.t('views.delete'), user_album_path(@user, @album), confirm: I18n.t('views.album.delete_msg'), method: :delete %> |
+      <%= link_to t('albums.edit.add_photo'), new_album_photo_path(@album) %> |
+      <%= link_to t('edit'), edit_user_album_path(@user, @album) %> |
+      <%= link_to t('delete'), user_album_path(@user, @album), confirm: t('albums.edit.delete_msg'), method: :delete %> |
     <% else %>
       <% photos_cnt = @album.photos_count %>
-      (<%= photos_cnt.to_s+' '+(photos_cnt == 1 ? I18n.t('views.user.photos') : I18n.t('views.user.photos')) %>)
+      (<%= t('.cnt_photos', count: photos_cnt) %>)
   <% end %>
   </div>
   </div>
@@ -32,7 +32,7 @@
       </div>
     <% end %>
   <% else %>
-    <p><%= I18n.t('views.photo.no_photos') %></p>
+    <p><%= t('.no_photos') %></p>
   <% end %>
   <div class="clear"></div>
 </div>

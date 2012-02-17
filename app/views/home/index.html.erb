@@ -1,12 +1,12 @@
-<% page_title = I18n.t('views.sitename') %>
+<% page_title = t('sitename') %>
 <% content_for :page_title, page_title %>
 
 <div class="albumTitle">
   <h1 class="home"><span><%= page_title %></span></h1> 
   <% unless logged_in? %>
     <div class="albumLinks">
-      <%= link_to I18n.t('views.user.login'), login_path %> |
-      <%= link_to I18n.t('views.user.registration'), new_user_path %> |
+      <%= link_to t('login'), login_path %> |
+      <%= link_to t('users.edit.registration'), new_user_path %> |
     </div>
   <% end %>
 </div>

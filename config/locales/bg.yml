@@ -13,7 +13,7 @@
             email:
               taken: 'вече е бил използван'
             password:
-              too_short: 'не може да е по-малко от 6 символа'
+              too_short: 'не може да е по-малко от %{count} символа'
         album:
           attributes:
             title:
@@ -55,89 +55,98 @@
       create: 'Създаване'
       update: 'Обновяване'
       login: 'Вписване'
-  views:
-    home: 'Начало'
-    preview: 'Преглед'
-    edit: 'Редактиране'
-    delete: 'Изтриване'
-    errors_occur: 'Възникнаха грешки'
-    error_occur: 'Възникна грешка'
-    mustbeloged_error: 'Трябва да сте регистриран потребител, за да достъпите тази страница.'
-    mustbeyours_error: 'Нямате права, за да достъпите този ресурс.'
-    sitename: 'Фото Дневник'
-    user:
-      registration:  'Регистрация'
-      edit_user: 'Редактиране на потребител'
-      preview_user: 'Потребител'
-      list: 'Потребители'
-      users_of: 'Потребителите на '
-      delete_msg: 'Сигурни ли сте, че искате да изтриете този потребител?'
-      new: 'Нов потребител'
-      back_to_users: 'Обратно към списъка с потребители'
+      publish: 'Публикуване'
+  home: 'Начало'
+  preview: 'Преглед'
+  edit: 'Редактиране'
+  delete: 'Изтриване'
+  error_occur:
+    one: 'Възникна 1 грешка'
+    other: 'Възникнаха %{count} грешки'
+  mustbeloged_error: 'Трябва да сте регистриран потребител, за да достъпите тази страница.'
+  mustbeyours_error: 'Нямате права, за да достъпите този ресурс.'
+  sitename: 'Фото Дневник'
+  login: 'Вход'
+  logout: 'Изход'
+  users_list: 'Потребители'
+  users:
+    new:
+      registration: 'Регистрация'
       created: 'Потребителят е създаден успешно.'
+    edit:
+      edit_user: 'Редактиране на потребител'
+      delete_msg: 'Сигурни ли сте, че искате да изтриете този потребител?'
       updated: 'Потребителят е обновен.'
-      login: 'Вход'
-      login_error: 'Грешка. Това потребителско име и парола не са валидни.'
-      login_succeeded: 'Вписахте се успешно.'
-      logout: 'Изход'
-      logout_succeeded: 'Излязохте успешно от профила си.'
-      logout_error: 'Грешка. В момента не можете да излезете от профила си. Моля, опитайте отново.'
+    index:
+      users_of_site: 'Потребителите на %{site}'
+      users_of_site_are:
+        one: 'Има само 1 потребител на %{site}'
+        other: 'Потребителите на %{site} са %{count}'
+    show:
       profile: 'Моят профил'
-      total: 'Общо'
-      album: 'албум'
-      albums: 'албума'
-      in: 'в'
-      photo: 'снимка'
-      photos: 'снимки'
-      album: 'албум'
-      is: 'е'
-      are: 'са'
-    album:
+      preview_user: 'Потребител %{user}'
+      total_photo:
+        one: 'Общо 1 снимка'
+        other: 'Общо %{count} снимки'
+      in_album:
+        one: 'в 1 албум'
+        other: 'в %{count} албума'
+    login:
+      error: 'Грешка. Това потребителско име и парола не са валидни.'
+      succeeded: 'Вписахте се успешно.'
+    logout:
+      succeeded: 'Излязохте успешно от профила си.'
+      error: 'Грешка. В момента не можете да излезете от профила си. Моля, опитайте отново.'
+  albums:
+    new:
       new_album: 'Нов албум'
-      edit_album: 'Редактиране на албум'
-      back_to_albums: 'Обратно към списъка с албуми'
-      preview_album: 'Преглед на албум'
-      list: 'Албумите на '
-      new: 'Нов албум'
-      create_new: 'Създаване на нов албум'
       created: 'Албумът е създаден успешно.'
-      updated: 'Албумът е обновен.'
-      delete_msg: 'Сигурни ли сте, че искате да изтриете този албум?'
-      my_albums: 'Моите албуми'
-      no_albums: 'Няма намерени албуми.'
-    photo:
+    edit:
+      edit_album: 'Редактиране на албум'
       add_photo: 'Добавяне на нова снимка'
-      to: ' към '
+      delete_msg: 'Сигурни ли сте, че искате да изтриете този албум?'
+      updated: 'Албумът е обновен.'
+    index:
+      my_albums: 'Моите албуми'
+      albums_of: 'Албумите на %{user}'
+      create_new: 'Създаване на нов албум'
+      no_albums: 'Няма намерени албуми.'
+  photos:
+    new:
+      add_photo_to_album: 'Добавяне на нова снимка към "%{album}"'
       back_to_album: 'Обратно към албума'
       choose_photo: 'Моля, изберете снимка'
       upload: 'Качване'
       created: 'Снимката е качена успешно.'
-      updated: 'Снимката е обновена.'
-      delete_msg: 'Сигурни ли сте, че искате да изтриете тази снимка?'
+    edit:
       preview_photo: 'Преглед на снимката'
+      delete_msg: 'Сигурни ли сте, че искате да изтриете тази снимка?'
+      updated: 'Снимката е обновена.'
+    show:
       previous: 'Предишна снимка'
       next: 'Следваща снимка'
       author: 'Автор'
-      viewed: 'Снимката е видяна '
-      times: ' пъти'
-      time: ' път'
-      belongs_to: 'на'
+      viewed_x_times:
+        one: 'Снимката е видяна 1 път'
+        other: 'Снимката е видяна %{count} пъти'
+    index:
       all_albums: 'Всички албуми на автора'
       no_photos: 'В този албум няма намерени снимки.'
-    comment:
-      no_comments: 'Няма коментари.'
-      comments: 'Коментари'
-      publish: 'Публикуване'
+      album_belongs_to_user: '"%{album}" на %{user}'
+      cnt_photos:
+        one: '1 снимка'
+        other: '%{count} снимки'
+  comments:
+    new:
       new_comment: 'Нов коментар'
+      created: 'Коментарът е публикуван успешно.'
+    edit:
       edit_comment: 'Редактиране на коментар'
       back_to_photo: 'Обратно към снимката'
-      published_on: 'Публикувано на '
-      last_edit: 'Последна редакция на '
-      created: 'Коментарът е публикуван успешно.'
       updated: 'Коментарът е редактиран успешно.'
-      
-      
-      
-      
-      
- 
+    index:
+      comments: 'Коментари'
+      no_comments: 'Няма коментари.'
+      published_on: 'Публикувано на %{date}'
+      last_edit: 'Последна редакция на %{date}'
+  
