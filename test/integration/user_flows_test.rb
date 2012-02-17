@@ -115,6 +115,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   def logout
     delete_via_redirect "/logout"
     assert_equal '/', path
-    assert_equal I18n.t('user.logout.succeeded'), flash[:message]
+    assert_equal I18n.t('users.logout.succeeded'), flash[:message]
   end
 end
