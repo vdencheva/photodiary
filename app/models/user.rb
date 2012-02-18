@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   attr_accessor :password, :remove_photo
   
-  attr_protected  :hashed_password
+  attr_protected  :hashed_password, :salt
   
   mount_uploader :photo, AvatarUploader
   
@@ -30,11 +30,15 @@ class User < ActiveRecord::Base
   end
   
   def has_password?(password)
-    self.hashed_password == User.encrypt(password)
+    self.hashed_password == User.encrypt(password, salt)
   end
   
-  def self.encrypt(password)
-    Digest::SHA1.hexdigest(password)
+  def self.encrypt(password, salt)
+    Digest::SHA1.hexdigest(password+salt)
+  end
+  
+  def generate_salt
+    self.object_id.to_s + rand.to_s
   end
   
   def avatar
@@ -60,7 +64,11 @@ class User < ActiveRecord::Base
   private
   
   def create_hashed_password
-    write_attribute(:hashed_password, User.encrypt(password)) if password.present?
+    if password.present?
+      new_salt = generate_salt
+      write_attribute(:salt, new_salt)
+      write_attribute(:hashed_password, User.encrypt(password, new_salt))
+    end
   end
   
   def update_photo

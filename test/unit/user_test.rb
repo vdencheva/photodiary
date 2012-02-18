@@ -60,7 +60,7 @@ class UserTest < ActiveSupport::TestCase
                     password: 'testpass',
                     email: 'tester10@example.com')
     user.save
-    assert_equal User.encrypt('testpass'), user.hashed_password
+    assert_equal User.encrypt('testpass', user.salt), user.hashed_password
   end
   
   test "hashed password can not be mass-assigned" do

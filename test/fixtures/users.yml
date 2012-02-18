@@ -2,14 +2,16 @@
 
 one:
   username: tester1
-  hashed_password: 206c80413b9a96c1312cc346b7d2517b84463edd
+  hashed_password: 9e9d5e77f3aa25d3c7637f80d2ec833bd6c341fd
+  salt: '463732560.9185032207688102'
   full_name: MyString
   email: tester1@example.com
   description: MyText
 
 two:
   username: tester2
-  hashed_password: 206c80413b9a96c1312cc346b7d2517b84463edd
+  hashed_password: 9e9d5e77f3aa25d3c7637f80d2ec833bd6c341fd
+  salt: '463732560.9185032207688102'
   full_name: MyString
   email: tester2@example.com
   description: MyText
