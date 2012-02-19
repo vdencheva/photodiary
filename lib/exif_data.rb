@@ -48,7 +48,7 @@ module ExifData
   def get_flash
     if @exif_data.flash
       hex_code = @exif_data.flash.to_s(16).upcase
-      flash_text = I18n.t("exif_data.code_#{hex_code}")
+      flash_text = I18n.t("exif_data.#{hex_code}")
     else
       ''
     end

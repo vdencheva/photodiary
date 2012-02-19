@@ -43,7 +43,7 @@ class PhotoTest < ActiveSupport::TestCase
     assert_equal 'f/10', photo.f_number
     assert_equal 'ISO-200', photo.iso_speed
     assert_equal '82 mm', photo.flength_35mm_film
-    assert_equal I18n.t("exif_data.code_0"), photo.flash
+    assert_equal I18n.t("exif_data.0"), photo.flash
   end
   
   test "should increment photo views" do
