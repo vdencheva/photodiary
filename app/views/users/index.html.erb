@@ -9,7 +9,9 @@
 <div class="usersHolder">
   <% @users.each_with_index do |user, i| %>
     <div class="usrHolder bm rm">
-      <%= link_to image_tag(user.avatar, border: 0), user_path(user), title: user.username, class: "userLink" %>
+      <% image_src = user.avatar %>
+      <% image_src = asset_path('noavatar.png') unless image_src %>
+      <%= link_to image_tag(image_src, border: 0), user_path(user), title: user.username, class: "userLink" %>
     </div>
   <% end %>
   <div class="clear"></div>

@@ -9,8 +9,7 @@ class Album < ActiveRecord::Base
   attr_protected :user_id
 
   def first_photo
-    result = Photo.where(album_id: id).order("id ASC").limit(1)
-    result.first ? result.first.file.thumb.url : "/assets/nophotos.png"
+    Photo.where(album_id: id).order("id ASC").first
   end
 
   def photos_count

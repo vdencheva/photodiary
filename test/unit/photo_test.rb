@@ -56,7 +56,7 @@ class PhotoTest < ActiveSupport::TestCase
   test "get previous and next photo in the album" do
     album = albums(:one)
     photo = photos(:two)
-    assert_equal album.photos.find('id < ?', photo.id).order('id DESC').first.id, photo.previous_photo_id
-    assert_equal album.photos.find('id > ?', photo.id).order('id ASC').first.id, photo.next_photo_id
+    assert_equal album.photos.find('id < ?', photo.id).order('id DESC').first, photo.previous_photo
+    assert_equal album.photos.find('id > ?', photo.id).order('id ASC').first, photo.next_photo
   end
 end

@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar
-    has_photo? ? photo.thumb.url : "/assets/noavatar.png"
+    photo.url ? photo.thumb.url : nil
   end
 
   def has_photo?
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def small_avatar
-    has_photo? ? photo.small_thumb.url : "/assets/noavatar.png"
+    photo.url ? photo.small_thumb.url : nil
   end
 
   def albums_count

@@ -21,11 +21,13 @@
     <%= image_tag(@photo.file.preview.url) %>
   </div>
   <div class="photoLinks">
-    <% if @photo.previous_photo_id %>
-      <%= link_to t('.previous'), album_photo_path(@album, @photo.previous_photo_id), class: "prevPhoto" %>
+    <% prev_photo = @photo.previous_photo %>
+    <% if prev_photo %>
+      <%= link_to t('.previous'), album_photo_path(@album, prev_photo), class: "prevPhoto" %>
     <% end %>
-    <% if @photo.next_photo_id %>
-      <%= link_to t('.next'), album_photo_path(@album, @photo.next_photo_id), class: "nextPhoto" %>
+    <% nxt_photo = @photo.next_photo %>
+    <% if nxt_photo %>
+      <%= link_to t('.next'), album_photo_path(@album, nxt_photo), class: "nextPhoto" %>
     <% end %>
   </div>
   <div class="clear"></div>
@@ -35,11 +37,9 @@
       <% end %>
       <p>
         <b><%= t('.author') %>:</b>
-        <% if @user.has_photo? %>
-          <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
-        <% else %>
-          <%= link_to @user.username, user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
-        <% end %>
+        <% image_src = @user.small_avatar %>
+        <% image_src = asset_path('noavatar_small.png') unless image_src %>
+        <%= link_to image_tag(image_src, border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
       </p>
       <% if @photo.place_taken && !@photo.place_taken.empty? %>
         <p>

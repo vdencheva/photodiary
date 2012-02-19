@@ -3,7 +3,9 @@
   <% if @photo.comments.count > 0 %>
     <% @photo.comments.each do |c| %>
       <div class="objHolder" id="comment-<%= c.id %>">
-        <%= link_to image_tag(c.user.avatar, border: 0), user_albums_path(c.user), title: t('albums.index.albums_of', user: @user.username) %>
+        <% image_src = c.user.avatar %>
+        <% image_src = asset_path('noavatar.png') unless image_src %>
+        <%= link_to image_tag(image_src, border: 0), user_albums_path(c.user), title: t('albums.index.albums_of', user: @user.username) %>
         <div class="comment">
           <p><%= c.body %></p>
           <% if has_comment_rights?(c) %>

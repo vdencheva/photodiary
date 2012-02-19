@@ -8,11 +8,9 @@
 <div class="albumTitle">
   <h1><%= page_title %>
     <% if !has_user_riths? %>
-      <% if @user.has_photo? %>
-        <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: t('.albums_of', user: @user.username) %>
-      <% else %>
-        <%= link_to @user.username, user_albums_path(@user), title: t('.albums_of', user: @user.username) %>
-      <% end %>
+      <% image_src = @user.small_avatar %>
+      <% image_src = asset_path('noavatar_small.png') unless image_src %>
+      <%= link_to image_tag(image_src, border: 0), user_albums_path(@user), title: t('.albums_of', user: @user.username) %>
     <% end %>
   </h1>
   <% if has_user_riths? %>
@@ -27,7 +25,13 @@
   <% if @albums.size > 0 %>
     <% @albums.each_with_index do |album, i| %>
       <div class="objHolder bm <%= 'rm' if i % 7 != 6 %>">
-        <%= link_to image_tag(album.first_photo, border: 0), album_photos_path(album), title: album.title, class: "photoLink" %>
+        <% album_photo = album.first_photo %>
+        <% if album_photo %>
+          <% first_image_src = album_photo.file.thumb.url %>
+        <% else %>
+          <% first_image_src = asset_path('nophotos.png') %>
+        <% end %>
+        <%= link_to image_tag(first_image_src, border: 0), album_photos_path(album), title: album.title, class: "photoLink" %>
       </div>
     <% end %>
   <% else %>

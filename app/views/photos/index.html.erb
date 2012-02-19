@@ -4,11 +4,9 @@
 <div class="albumTitle">
   <h1>
     <%= page_title %>
-    <% if @user.has_photo? %>
-      <%= link_to image_tag(@user.small_avatar, border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
-    <% else %>
-      <%= link_to @user.username, user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
-    <% end %>
+    <% image_src = @user.small_avatar %>
+    <% image_src = asset_path('noavatar_small.png') unless image_src %>
+    <%= link_to image_tag(image_src, border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
   </h1>
   <div class="albumLinks">
     <% if has_album_rights? %> 
