@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   before_filter :load_album, :load_album_owner
   before_filter :require_login, only: [:new, :create, :edit, :update, :destroy]
-    
+
   # GET /albums/:album_id/photos
   def index
     @photos = @album.photos
@@ -55,18 +55,18 @@ class PhotosController < ApplicationController
   def destroy
     redirect_to root_path and return unless is_owner? @album.user_id
     @photo = @album.photos.find(params[:id])    
-    
+
     @photo.destroy
 
     redirect_to album_photos_url(@album) and return
   end
-  
+
   private
-  
+
   def load_album
     @album = Album.find(params[:album_id])
   end
-  
+
   def load_album_owner
     @user = User.find(@album.user_id)
   end

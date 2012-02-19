@@ -1,6 +1,6 @@
 ﻿class UsersController < ApplicationController  
   before_filter :require_login, only: [:edit, :update, :destroy, :logout]
-  
+
   # GET /users
   def index
     @users = User.all
@@ -38,7 +38,7 @@
   def update
     @user = User.find(params[:id])
     redirect_to root_path and return unless is_owner? @user.id
-    
+
     if params[:user][:photo]
       params[:user][:remove_photo] = nil
     end
@@ -55,17 +55,17 @@
   def destroy
     @user = User.find(params[:id])
     redirect_to root_path and return unless is_owner? @user.id
-    
+
     @user.destroy
 
     redirect_to users_path and return
   end
-  
+
   # GET /login
   def login
     @user = User.new
   end
-  
+
   # POST /login
   def login_process
     session[:current_user] = User.authenticate(params[:user][:username], params[:user][:password])
@@ -78,7 +78,7 @@
       render :login and return
     end
   end
-  
+
   # DELETE /logout
   def logout
     reset_session

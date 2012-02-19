@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :require_login, only: [:create, :edit, :update]
-  
+
   # POST /albums/:album_id/photo/:photo_id/comments
   def create
     @photo = Photo.find params[:photo_id]
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       render :new
     end
   end
-  
+
   # GET /albums/:album_id/photos/:photo_id/comments/:id/edit
   def edit
     load_comment_and_photo
@@ -33,9 +33,9 @@ class CommentsController < ApplicationController
       render :edit and return
     end
   end
-  
+
   private
-  
+
   def load_comment_and_photo
     @comment = Comment.find params[:id]
     @photo = @comment.photo

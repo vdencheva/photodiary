@@ -11,21 +11,21 @@ module ExifData
       @exif_data = nil
     end
   end
-  
+
   def get_model
     @exif_data.model.nil? ? '' : @exif_data.model.to_s
   end
-  
+
   def get_date_time
     @exif_data.date_time_original.nil? ? '' : @exif_data.date_time_original.to_s
   end
-  
+
   def get_exposure_time
     exposure_time_int = @exif_data.exposure_time.to_i
     exposure_time_val = (@exif_data.exposure_time == exposure_time_int ? exposure_time_int : @exif_data.exposure_time)
     @exif_data.exposure_time.nil? ? '' : (exposure_time_val.to_s + ' sec')
   end
-  
+
   def get_f_number
     if @exif_data.f_number
       f_number_float = @exif_data.f_number.to_f
@@ -36,15 +36,15 @@ module ExifData
       ''
     end
   end
-  
+
   def get_iso_speed
     @exif_data.iso_speed_ratings ? ('ISO-' + @exif_data.iso_speed_ratings.to_s) : ''
   end
-  
+
   def get_focal_length_in_35mm_film
     @exif_data.focal_length_in_35mm_film ? (@exif_data.focal_length_in_35mm_film.to_s + ' mm') : ''
   end
-  
+
   def get_flash
     if @exif_data.flash
       hex_code = @exif_data.flash.to_s(16).upcase
@@ -53,7 +53,7 @@ module ExifData
       ''
     end
   end
-  
+
   def get_latitude
     gps_lat = get_coordinate(@exif_data.gps_latitude)
     if gps_lat
@@ -61,7 +61,7 @@ module ExifData
     end
     gps_lat
   end
-  
+
   def get_longitude
     gps_long = get_coordinate(@exif_data.gps_longitude)
     if gps_long
@@ -69,7 +69,7 @@ module ExifData
     end
     gps_long
   end
-  
+
   def get_coordinate(coord_array)
     if coord_array && coord_array.kind_of?(Array)
       value = coord_array[0];
@@ -80,12 +80,12 @@ module ExifData
       ''
     end
   end
-  
+
   def get_gps_address(lat, long)
     obj = Geocoder.search([lat, long])
     obj.first ? obj.first.formatted_address : ''
   end
-  
+
   def get_orientation
     orientation = @exif_data.orientation.to_i
   end

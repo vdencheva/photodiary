@@ -39,4 +39,3 @@
   <% albums_cnt = @user.albums_count %>
   <b><%= link_to t('.total_photo', count: photos_cnt)+' '+t('.in_album', count: albums_cnt), user_albums_path(@user) %></b>
 </p>
-

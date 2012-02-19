@@ -9,7 +9,7 @@ module CarrierWave
         img
       end
     end
-    
+
     def correct_orientation(img, orientation)
       case orientation
       when 2

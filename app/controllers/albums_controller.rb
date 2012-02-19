@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
   before_filter :load_album_owner
   before_filter :require_login, only: [:new, :create, :edit, :update, :destroy]
-  
+
   # GET /user/:user_id/albums
   def index
     @albums = @user.albums
@@ -59,9 +59,9 @@ class AlbumsController < ApplicationController
 
     redirect_to user_albums_url(@user) and return
   end
-  
+
   private
-  
+
   def load_album_owner
     @user = User.find(params[:user_id])
   end
