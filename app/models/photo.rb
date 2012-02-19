@@ -13,11 +13,11 @@ class Photo < ActiveRecord::Base
   attr_protected :album_id
 
   def previous_photo
-    Photo.where(album_id: album_id, id: id).order("id DESC").first
+    Photo.where("album_id = ? AND id < ?", album_id, id).order("id DESC").first
   end
 
   def next_photo
-    Photo.where(album_id: album_id, id: id).order("id ASC").first
+    Photo.where("album_id = ? AND id > ?", album_id, id).order("id ASC").first
   end
 
   def increment_views
