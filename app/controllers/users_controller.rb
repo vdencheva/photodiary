@@ -3,7 +3,7 @@
 
   # GET /users
   def index
-    @users = User.all
+    @users = UserDecorator.decorate(User.all)
   end
 
   # GET /users/1

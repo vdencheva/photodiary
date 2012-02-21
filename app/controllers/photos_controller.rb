@@ -68,6 +68,6 @@ class PhotosController < ApplicationController
   end
 
   def load_album_owner
-    @user = User.find(@album.user_id)
+    @user = UserDecorator.find(@album.user_id)
   end
 end

@@ -16,7 +16,7 @@
 </div>
 <%= render 'messages' %>
 
-<% if @user.photo? %>
+<% if @user.has_photo? %>
   <%= image_tag(@user.photo.preview.url) %><br />
 <% end %>
 <p>

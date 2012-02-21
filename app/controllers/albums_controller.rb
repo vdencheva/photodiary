@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
 
   # GET /user/:user_id/albums
   def index
-    @albums = @user.albums
+    @albums = AlbumDecorator.decorate(@user.albums)
   end
 
   # GET /user/:user_id/albums/:id
@@ -63,6 +63,6 @@ class AlbumsController < ApplicationController
   private
 
   def load_album_owner
-    @user = User.find(params[:user_id])
+    @user = UserDecorator.find(params[:user_id])
   end
 end

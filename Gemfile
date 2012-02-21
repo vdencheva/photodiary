@@ -36,6 +36,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'exifr'
 gem 'geocoder'
+gem 'draper'
 
 group :development do
   gem 'ruby-debug19'

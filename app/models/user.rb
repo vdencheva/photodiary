@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password, :remove_photo
 
-  attr_protected  :hashed_password, :salt
+  attr_protected :hashed_password, :salt
 
   mount_uploader :photo, AvatarUploader
 
@@ -41,16 +41,16 @@ class User < ActiveRecord::Base
     self.object_id.to_s + rand.to_s
   end
 
-  def avatar
-    photo.url ? photo.thumb.url : nil
+  def avatar_standard
+    photo.thumb.try(:url)
   end
 
   def has_photo?
     photo.url ? true : false
   end
 
-  def small_avatar
-    photo.url ? photo.small_thumb.url : nil
+  def avatar_small
+    photo.small_thumb.try(:url)
   end
 
   def albums_count
