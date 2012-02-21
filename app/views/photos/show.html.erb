@@ -21,14 +21,8 @@
     <%= image_tag(@photo.file.preview.url) %>
   </div>
   <div class="photoLinks">
-    <% prev_photo = @photo.previous_photo %>
-    <% if prev_photo %>
-      <%= link_to t('.previous'), album_photo_path(@album, prev_photo), class: "prevPhoto" %>
-    <% end %>
-    <% nxt_photo = @photo.next_photo %>
-    <% if nxt_photo %>
-      <%= link_to t('.next'), album_photo_path(@album, nxt_photo), class: "nextPhoto" %>
-    <% end %>
+    <%= @photo.previous_photo_tag %>
+    <%= @photo.next_photo_tag %>
   </div>
   <div class="clear"></div>
   <div class="previewInfo">
