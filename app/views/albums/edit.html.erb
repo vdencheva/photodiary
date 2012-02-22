@@ -1,9 +1,9 @@
 <% page_title = t('.edit_album') %>
 <% content_for :page_title, page_title %>
 
-<div class="albumTitle">
+<div class="title">
   <h1><%= page_title %></h1>
-  <div class="albumLinks">
+  <div class="links">
     <%= link_to t('.add_photo'), new_album_photo_path(@album) %> |
     <%= link_to t('preview'), album_photos_path(@album) %> |
     <%= link_to t('delete'), [current_user, @album], confirm: t('.delete_msg'), method: :delete %> |

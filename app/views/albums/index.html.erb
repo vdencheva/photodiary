@@ -5,25 +5,25 @@
 <% end %>
 <% content_for :page_title, page_title %>
 
-<div class="albumTitle">
+<div class="title">
   <h1><%= page_title %>
     <% if !has_user_riths? %>
       <%= link_to image_tag(@user.avatar_src(:small), border: 0), user_albums_path(@user), title: t('.albums_of', user: @user.username) %>
     <% end %>
   </h1>
   <% if has_user_riths? %>
-    <div class="albumLinks">
+    <div class="links">
       <%= link_to t('.create_new'), new_user_album_path(@user) %> |
     </div>
   <% end %>
 </div>
 <%= render 'messages' %>
 
-<div class="photoHolder">
+<div class="albumHolder">
   <% if @albums.size > 0 %>
     <% @albums.each_with_index do |album, i| %>
       <div class="objHolder bm <%= 'rm' if i % 7 != 6 %>">
-        <%= link_to image_tag(album.first_image_src, border: 0), album_photos_path(album), title: album.title, class: "photoLink" %>
+        <%= link_to image_tag(album.first_image_src, border: 0), album_photos_path(album), title: album.title, class: "albumLink" %>
       </div>
     <% end %>
   <% else %>

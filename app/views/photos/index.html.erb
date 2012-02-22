@@ -1,12 +1,12 @@
 <% page_title = t('.album_belongs_to_user', album: @album.title, user: @user.username) %>
 <% content_for :page_title, page_title %>
 
-<div class="albumTitle">
+<div class="title">
   <h1>
     <%= page_title %>
     <%= link_to image_tag(@user.avatar_src(:small), border: 0), user_albums_path(@user), title: t('albums.index.albums_of', user: @user.username) %>
   </h1>
-  <div class="albumLinks">
+  <div class="links">
     <% if has_album_rights? %> 
       <%= link_to t('albums.edit.add_photo'), new_album_photo_path(@album) %> |
       <%= link_to t('edit'), edit_user_album_path(@user, @album) %> |

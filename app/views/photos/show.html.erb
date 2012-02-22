@@ -5,10 +5,10 @@
 <% end %>
 <% content_for :page_title, page_title %>
 
-<div class="albumTitle">
+<div class="title">
   <h1><%= link_to @album.title, album_photos_path(@album) %></h1>
   <% if has_album_rights? %>
-    <div class="albumLinks">
+    <div class="links">
       <%= link_to t('edit'), edit_album_photo_path(@album, @photo) %> |
       <%= link_to t('delete'), album_photo_path(@album, @photo), confirm: t('photos.edit.delete_msg'), method: :delete %> |
     </div>

@@ -1,3 +1,7 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "photos";
+
+.row .title h1.home {
+  margin-top: 0;
+  line-height: 62px;
+  background: transparent image-url('logohome.png') no-repeat 0 0;
+}

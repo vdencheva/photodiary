@@ -1,0 +1,81 @@
+@import "navigation";
+@import "notice";
+
+body {
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+.rm {
+  margin-right: 20px;
+}
+
+.bm {
+  margin-bottom: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.wrapper {
+  width: 100%;
+  background: #E8E8E8 image-url('bg.gif') repeat-y top center;
+}
+
+.row {
+  width: 940px;
+  min-height: 560px;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+  display: block;
+  clear: both;
+}
+
+.row .title {
+  width: 100%;
+}
+
+.row .title span {
+  margin-left: 100px;
+}
+
+.row .title .links {
+  padding: 0 0 20px;
+}
+
+.row .title .links a {
+  color: #597A9B;
+  text-decoration: none;
+}

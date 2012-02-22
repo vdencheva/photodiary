@@ -1,3 +1,19 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.row .usersHolder .usrHolder {
+  width: 110px;
+  float: left;
+  position: relative;
+}
+
+.row .usersHolder .usrHolder a.userLink {
+  display: inline-block;
+  outline: none;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  padding: 4px;
+  position: relative;
+}
+
+.row .usersHolder .usrHolder a.userLink:hover {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+}

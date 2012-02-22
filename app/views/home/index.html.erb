@@ -1,10 +1,10 @@
 <% page_title = t('sitename') %>
 <% content_for :page_title, page_title %>
 
-<div class="albumTitle">
+<div class="title">
   <h1 class="home"><span><%= page_title %></span></h1> 
   <% unless logged_in? %>
-    <div class="albumLinks">
+    <div class="links">
       <%= link_to t('login'), login_path %> |
       <%= link_to t('users.new.registration'), new_user_path %> |
     </div>

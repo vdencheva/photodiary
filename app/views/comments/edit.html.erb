@@ -1,9 +1,9 @@
 <% page_title = t('.edit_comment') %>
 <% content_for :page_title, page_title %>
 
-<div class="albumTitle">
+<div class="title">
   <h1><%= page_title %></h1>
-  <div class="albumLinks">
+  <div class="links">
     <%= link_to t('.back_to_photo'), album_photo_path(@photo.album, @photo) %> |
   </div>
 </div>

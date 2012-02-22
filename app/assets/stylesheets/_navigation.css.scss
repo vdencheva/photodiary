@@ -1,0 +1,52 @@
+.topHolder, .bottomHolder {
+  background: #F8F8F8 image-url('topbg.gif') repeat-x 0 0;
+  height: 33px;
+}
+
+.topHolder .topNavigation, .bottomHolder .bottomNavigation {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.topHolder .topNavigation .nav, .bottomHolder .bottomNavigation .nav {
+  float: left;
+  height: 33px;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.topHolder .topNavigation .nav li, .bottomHolder .bottomNavigation .nav li {
+  float: left;
+  display: block;
+  line-height: 33px;
+  list-style-type: none;
+}
+
+.topHolder .topNavigation .nav li a, .bottomHolder .bottomNavigation .nav li a {
+  color: #B3B3B3;
+  padding: 0 7px 0 6px;
+  text-decoration: none;
+}
+
+.topHolder .topNavigation .nav li a:hover, .bottomHolder .bottomNavigation .nav li a {
+  color: #FFFFFF;
+}
+
+.topHolder .topNavigation .nav a.topLogo {
+  background: transparent image-url('photoLogo.png') no-repeat 0 0;
+  width: 77px;
+  height: 33px;
+  display: block;
+  padding: 0 10px;
+}
+
+.topHolder .topNavigation .nav a.topLogo:hover {
+  background-position: 0 -38px;
+}
+
+.topHolder .topNavigation p, .bottomHolder .bottomNavigation p {
+  color: #B3B3B3;
+  font-size: 11px;
+  line-height: 33px;
+}
