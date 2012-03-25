@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  id: 1
   album: one
   file: File.open(Rails.root.join("test/fixtures/DSC_3207.jpg"))
   title: PhotoOne
@@ -19,7 +18,6 @@ one:
   views: 0
 
 two:
-  id: 2
   album: one
   file: File.open(Rails.root.join("test/fixtures/DSC_4952.jpg"))
   title: PhotoTwo
@@ -35,9 +33,8 @@ two:
   longitude: 0.0
   gps_address: MyText
   views: 0
-  
+
 three:
-  id: 3
   album: one
   file: File.open(Rails.root.join("test/fixtures/DSC_9581.jpg"))
   title: PhotoThree
