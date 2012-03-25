@@ -5,9 +5,9 @@ database_config = database_config = YAML.load(File.read("#{File.dirname(__FILE__
 database_name   = database_config['production']['database']
 
 set :application,       "photodiary"
-set :repository,        "git://github.com/mitio/photodiary.git"
+set :repository,        "git://github.com/vdencheva/photodiary.git"
 set :deploy_to,         "/data/rails/#{application}"
-set :branch,            'deployment'
+set :branch,            'master'
 set :deploy_via,        :remote_cache
 set :scm,               :git
 set :user,              "pyfmi"
