@@ -1,8 +1,6 @@
 require 'bundler/capistrano'
 
-site_domain     = 'phd.hno3.org'
-database_config = database_config = YAML.load(File.read("#{File.dirname(__FILE__)}/database.yml"))
-database_name   = database_config['production']['database']
+site_domain = 'phd.hno3.org'
 
 set :application,       "photodiary"
 set :repository,        "git://github.com/vdencheva/photodiary.git"
