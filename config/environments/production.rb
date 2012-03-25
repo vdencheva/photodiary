@@ -43,7 +43,13 @@ Photodiary::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  # Find out the list of assets available for packaging for your app:
+  #   Rails.application.assets.each_logical_path { |p| puts p }
+  # Or which paths are searched for assets:
+  #   Rails.application.assets.paths.each { |path| puts path }; nil
+  # How are paths matched:
+  #   https://github.com/rails/rails/blob/v3.1.3/actionpack/lib/sprockets/static_compiler.rb#L18
+  config.assets.precompile += [/^[a-z0-9]\w+\.(css|js)$/]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
