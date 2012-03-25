@@ -33,7 +33,7 @@ two:
   longitude: 0.0
   gps_address: MyText
   views: 0
-  
+
 three:
   album: one
   file: File.open(Rails.root.join("test/fixtures/DSC_9581.jpg"))

@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120217235446) do
   end
 
   add_index "albums", ["user_id", "title"], :name => "index_albums_on_user_id_and_title", :unique => true
+  add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -57,10 +58,10 @@ ActiveRecord::Schema.define(:version => 20120217235446) do
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",        :null => false
+    t.string   "username",                        :null => false
     t.string   "hashed_password"
     t.string   "full_name"
-    t.string   "email",           :null => false
+    t.string   "email",                           :null => false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

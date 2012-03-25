@@ -4,7 +4,11 @@ class AlbumsController < ApplicationController
 
   # GET /user/:user_id/albums
   def index
-    @albums = AlbumDecorator.decorate(@user.albums)
+    # The #to_a here avoids obscure problems with Draper and ActiveSupport::HashWithIndifferentAccess
+    # resulting in an exception because someone tries to modify frozen hashes. That means that
+    # {sth: @user.albums}.with_indifferent_access will not work.
+    # Filed an issue here: https://github.com/jcasimir/draper/issues/158
+    @albums = @user.albums.to_a
   end
 
   # GET /user/:user_id/albums/:id
