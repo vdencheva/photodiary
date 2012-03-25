@@ -25,6 +25,7 @@ namespace :deploy do
   task :symlink_shared, :roles => :app do
     run "ln -nfs #{shared_path}/database.yml     #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/secret_token.txt #{release_path}/config/secret_token.txt"
+    run "ln -nfs #{shared_path}/uploads          #{release_path}/public/uploads"
   end
 end
 
