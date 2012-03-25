@@ -40,6 +40,7 @@ gem 'draper'
 
 group :development do
   gem 'ruby-debug19'
+  gem 'capistrano'
 end
 
 group :test do
