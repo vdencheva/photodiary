@@ -7,7 +7,7 @@ database_name   = database_config['production']['database']
 set :application,       "photodiary"
 set :repository,        "git://github.com/mitio/photodiary.git"
 set :deploy_to,         "/data/rails/#{application}"
-set :branch,            'master'
+set :branch,            'deployment'
 set :deploy_via,        :remote_cache
 set :scm,               :git
 set :user,              "pyfmi"
