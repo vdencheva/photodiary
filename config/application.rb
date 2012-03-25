@@ -44,5 +44,10 @@ module Photodiary
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Custom configuration
+    config.site_domain   = 'phd.hno3.org'
+    config.contact_email = 'noreply@phd.hno3.org'
+    config.email_from    = '"Photo Diary" <' + config.contact_email + '>'
   end
 end
