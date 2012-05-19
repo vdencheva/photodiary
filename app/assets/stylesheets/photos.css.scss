@@ -31,8 +31,12 @@
   padding-bottom: 20px;
 }
 
-.previewHolder .photoLinks .nextPhoto {
+.previewHolder .photoLinks .rightPhotoLink {
   float: right;
+}
+
+.previewHolder .photoLinks .leftPhotoLink {
+  float: auto;
 }
 
 .previewHolder .previewInfo {
