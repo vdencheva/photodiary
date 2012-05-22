@@ -56,7 +56,7 @@ class PhotoTest < ActiveSupport::TestCase
   test "get previous and next photo in the album" do
     ordered_photos = [:one, :two, :three].map { |label| photos(label) }.sort_by(&:id)
 
-    assert_equal ordered_photos.first, ordered_photos.second.previous_photo
-    assert_equal ordered_photos.third, ordered_photos.second.next_photo
+    assert_equal ordered_photos.first, ordered_photos.second.next_photo
+    assert_equal ordered_photos.third, ordered_photos.second.previous_photo
   end
 end
